@@ -1,0 +1,30 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install dependencies
+      run: yarn install
+    - name: Run tests
+      run: yarn test
+    - name: Build
+      run: yarn build
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Deploy to server
+      run: |
+        scp -r ./build ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_NAME }}:/kb/ending-project
+        sshpass -p ${{ secrets.SERVER_PASSWORD }} ssh root@${{ secrets.SERVER_NAME }} "docker restart ending-project"
+      env:
+        SSH_AUTH_SOCK: /dev/null # 禁用 SSH Agent
