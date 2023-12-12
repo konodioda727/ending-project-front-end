@@ -22,12 +22,10 @@ jobs:
         git config --global user.email "1845519693@qq.com"
         git config --global user.name "ci"
         git checkout -b main  # 创建或切换到目标分支
+        git pull origin main
         git add ./dist
         git commit -m "build: auto build"
         git push origin main
-      env:
-        HTTP_PROXY: ${{ secrets.HTTP_PROXY }}
-        HTTPS_PROXY: ${{ secrets.HTTP_PROXY }}
   deploy:
     needs: build
     runs-on: ubuntu-latest
