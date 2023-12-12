@@ -28,4 +28,5 @@ jobs:
         ssh-keyscan -H 121.41.170.32 >> ~/.ssh/known_hosts
         echo "${{ secrets.SECRETE_KEY }}" > /tmp/private_key.pem
         chmod 600 /tmp/private_key.pem
+        scp -i /tmp/private_key.pem -r ./dist ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_NAME }}:/kb/ending-project
         ssh -i /tmp/private_key.pem ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_NAME }} "docker restart ending-project"
