@@ -21,6 +21,7 @@ jobs:
       run: |
         git config --global user.email "1845519693@qq.com"
         git config --global user.name "ci"
+        git config pull.rebase false
         git checkout -b main  # 创建或切换到目标分支
         git pull origin main
         git add ./dist
