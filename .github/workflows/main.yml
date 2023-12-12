@@ -17,6 +17,14 @@ jobs:
       run: yarn test
     - name: Build
       run: yarn build
+    - name: Push to Branch
+      run: |
+        git config --global user.email "1845519693@qq.com"
+        git config --global user.name "ci"
+        git checkout -b main  # 创建或切换到目标分支
+        git add ./dist
+        git commit -m "build: auto build"
+        git push origin main
   deploy:
     needs: build
     runs-on: ubuntu-latest
@@ -28,5 +36,5 @@ jobs:
         ssh-keyscan -H 121.41.170.32 >> ~/.ssh/known_hosts
         echo "${{ secrets.SECRETE_KEY }}" > /tmp/private_key.pem
         chmod 600 /tmp/private_key.pem
-        scp -i /tmp/private_key.pem -r ./dist/* ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_NAME }}:/kb/ending-project
+        scp -i /tmp/private_key.pem -r ./dist ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_NAME }}:/kb/ending-project
         ssh -i /tmp/private_key.pem ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_NAME }} "docker restart ending-project"
