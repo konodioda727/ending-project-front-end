@@ -24,9 +24,9 @@ jobs:
         git config pull.rebase false
         git checkout -b main  # 创建或切换到目标分支
         git pull --allow-unrelated-histories origin main
-        git add ./dist
+        git add .
         git commit -m "build: auto build"
-        git push origin main
+        git push -f origin main
   deploy:
     needs: build
     runs-on: ubuntu-latest
