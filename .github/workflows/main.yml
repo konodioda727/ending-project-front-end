@@ -21,10 +21,9 @@ jobs:
       run: |
         git config --global user.email "1845519693@qq.com"
         git config --global user.name "ci"
-        git config pull.rebase false
-        git add .
+        git add -f ./dist
         git commit -m "build: auto build"
-        git push -f origin main
+        git push -f origin build
   deploy:
     needs: build
     runs-on: ubuntu-latest
