@@ -10,31 +10,33 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Install dependencies
-        run: yarn install
-      - name: Run tests
-        run: yarn test
-      - name: Build
-        run: yarn build
-      - name: Push to Branch
-        run: |
-          git config --global user.email "1845519693@qq.com"
-          git config --global user.name "ci"
-          git checkout -b build
-          git add -f dist
-          git commit -m "Build output"
-          git push -f origin build
+    - uses: actions/checkout@v2
+    - name: Install dependencies
+      run: yarn install
+    - name: Run tests
+      run: yarn test
+    - name: Build
+      run: yarn build
+    - name: Push to Branch
+      run: |
+        git config --global user.email "1845519693@qq.com"
+        git config --global user.name "ci"
+        git config pull.rebase false
+        git checkout -b main  # 创建或切换到目标分支
+        git pull --allow-unrelated-histories origin main
+        git add .
+        git commit -m "build: auto build"
+        git push -f origin main
   deploy:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Deploy to Server
-        run: |
-          mkdir -p ~/.ssh
-          ssh-keyscan -H 121.41.170.32 >> ~/.ssh/known_hosts
-          echo "${{ secrets.SECRETE_KEY }}" > /tmp/private_key.pem
-          chmod 600 /tmp/private_key.pem
-          scp -i /tmp/private_key.pem -r ./dist/* ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_NAME }}:/kb/ending-project
-          ssh -i /tmp/private_key.pem ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_NAME }} "docker restart ending-project"
+    - uses: actions/checkout@v2
+    - name: Deploy to Server
+      run: |
+        mkdir -p ~/.ssh
+        ssh-keyscan -H 121.41.170.32 >> ~/.ssh/known_hosts
+        echo "${{ secrets.SECRETE_KEY }}" > /tmp/private_key.pem
+        chmod 600 /tmp/private_key.pem
+        scp -i /tmp/private_key.pem -r ./dist/* ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_NAME }}:/kb/ending-project
+        ssh -i /tmp/private_key.pem ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_NAME }} "docker restart ending-project"
