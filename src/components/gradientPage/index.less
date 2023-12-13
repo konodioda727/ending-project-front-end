@@ -1,8 +1,16 @@
-.background-page {
-    transition: all ease-in-out .8s;
-    //transform:  translate(-50%, -50%);
-    transform-origin: center;
-    width: 400vw;
-    height: 500vh;
+.canvas-wrap {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
     z-index: -1;
+    top: 0;
+    left: 0;
+    position: absolute;
+    .background-page {
+        transition: all ease-in-out .8s;
+        transform-origin: center;
+        width: 400vw;
+        height: 500vh;
+        z-index: -1;
+    }
 }

@@ -36,7 +36,7 @@ const GradientPage: React.FC = () => {
     return () => window.removeEventListener('mvPageVertically', handleRemove);
   }, [offset]);
   return (
-    <>
+    <div className="canvas-wrap">
       <canvas
         ref={canvasRef}
         width="200%"
@@ -49,7 +49,7 @@ const GradientPage: React.FC = () => {
           top: `${offset.offsetY}vh`,
         }}
       />
-    </>
+    </div>
   );
 };
 
