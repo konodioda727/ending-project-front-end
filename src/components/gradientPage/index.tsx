@@ -8,12 +8,19 @@ const GradientPage: React.FC = () => {
     offsetY: 0,
     offsetX: 0,
   });
+  const [reverse, setReverse] = useState<-1 | 1>(-1);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const handleClick = (type: 'vertical' | 'horizontal') => {
     if (type === 'horizontal')
-      setOffset({ offsetY: offset.offsetY, offsetX: offset.offsetX + 1000 });
+      setOffset({ ...offset, offsetX: offset.offsetX + reverse * 50 });
     if (type === 'vertical')
-      setOffset({ offsetX: offset.offsetX, offsetY: offset.offsetY + 80 });
+      setOffset({ ...offset, offsetY: offset.offsetY + reverse * 100 });
+    if (offset.offsetX <= -100 || offset.offsetY <= -300) {
+      setReverse(1);
+    }
+    if (offset.offsetX >= 100 || offset.offsetY >= -100) {
+      setReverse(-1);
+    }
   };
   useEffect(() => {
     drawGradient(canvasRef);
@@ -32,14 +39,14 @@ const GradientPage: React.FC = () => {
     <>
       <canvas
         ref={canvasRef}
-        width="2000vw"
-        height="6000vh"
+        width="200%"
+        height="200%"
         className="background-page"
         data-testid={'gradient-background'}
         style={{
           position: 'absolute',
-          left: `-${offset.offsetX}px`,
-          top: `-${offset.offsetY}px`,
+          left: `${offset.offsetX}vh`,
+          top: `${offset.offsetY}vh`,
         }}
       />
     </>
