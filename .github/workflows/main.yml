@@ -30,6 +30,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+      with:
+          ref: 'build'
     - name: Deploy to Server
       run: |
         mkdir -p ~/.ssh
