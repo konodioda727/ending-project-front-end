@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import GradientPage from './index.tsx';
+import GradientPage from '../components/gradientPage/index.tsx';
 import { it } from 'vitest';
 import '@testing-library/jest-dom';
 

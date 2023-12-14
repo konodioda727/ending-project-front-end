@@ -1,7 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { drawGradient } from './canvas.ts';
-import { PageOffsetType } from './types.ts';
+import { PageOffsetType } from '../types/gradientPageTypes.ts';
 import './index.less';
+import { GenerateStarComponents } from '../star';
 
 const GradientPage: React.FC = () => {
   const [offset, setOffset] = useState<PageOffsetType>({
@@ -9,6 +10,10 @@ const GradientPage: React.FC = () => {
     offsetX: 0,
   });
   const [reverse, setReverse] = useState<-1 | 1>(-1);
+  const [stars, setStars] = useState<React.ReactElement>(
+    GenerateStarComponents(8)
+  );
+
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const handleClick = (type: 'vertical' | 'horizontal') => {
     if (type === 'horizontal')
@@ -24,6 +29,10 @@ const GradientPage: React.FC = () => {
   };
   useEffect(() => {
     drawGradient(canvasRef);
+    setInterval(() => {
+      setStars(GenerateStarComponents(Math.random() * 6 + 6));
+      console.log('set');
+    }, 12000);
   }, []);
   useEffect(() => {
     const handleRemove = () => {
@@ -35,6 +44,7 @@ const GradientPage: React.FC = () => {
     );
     return () => window.removeEventListener('mvPageVertically', handleRemove);
   }, [offset]);
+
   return (
     <div className="canvas-wrap">
       <canvas
@@ -49,6 +59,7 @@ const GradientPage: React.FC = () => {
           top: `${offset.offsetY}vh`,
         }}
       />
+      {stars}
     </div>
   );
 };
