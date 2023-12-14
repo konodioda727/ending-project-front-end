@@ -6,6 +6,14 @@ import './App.css';
 
 function App() {
   const [count, setCount] = useState(0);
+  document.addEventListener(
+    'touchmove',
+    function (event) {
+      event.preventDefault();
+    },
+    { passive: false }
+  );
+
   return (
     <>
       <GradientPage></GradientPage>

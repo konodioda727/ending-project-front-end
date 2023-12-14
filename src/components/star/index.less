@@ -1,0 +1,35 @@
+@bigSize: 30px;
+@mediumSize: 15px;
+@smallSize: 10px;
+.star {
+  width: @mediumSize;
+  height: @mediumSize;
+  position: absolute;
+  scale: 0;
+  opacity: 0;
+  transform: translateY(0);
+  animation: appear .4s ease-in-out forwards, rotate 2s ease-in-out forwards;
+}
+.star-big, .star-medium, .star-small {
+  .star;
+}
+@keyframes appear {
+  0% {
+    opacity: 0;
+    scale: 0;
+  }
+  50% {
+    opacity: 1;
+    scale: 1;
+  }
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+    scale: 1;
+  }
+  100% {
+    transform: rotate(360deg);
+    scale: 1;
+  }
+}

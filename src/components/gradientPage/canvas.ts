@@ -19,7 +19,7 @@ export const drawGradient = (canvasRef: React.RefObject<HTMLCanvasElement>) => {
       gradient.addColorStop(colorStop, '#B56CFF');
       continue;
     }
-    gradient.addColorStop(colorStop, '#F17272');
+    gradient.addColorStop(colorStop, '#E0709A');
   }
   ctx.fillStyle = gradient;
   ctx.fillRect(0, 0, canvas.width, canvas.height);
