@@ -3,6 +3,7 @@ import GradientPage from '../../components/gradientPage';
 import './App.css';
 import ContentView, { View } from '../../components/contentView';
 import Word from '../../components/word';
+import { Stars } from '../../components/randomObjects/star.tsx';
 
 const App: React.FC = () => {
   const [count, setCount] = useState(0);
@@ -25,9 +26,11 @@ const App: React.FC = () => {
           <Word style={{ position: 'absolute', top: '20px', left: '220px' }}>
             123
           </Word>
+          <Stars></Stars>
         </View>
         <View>
           <div>489879</div>
+          <Stars></Stars>
         </View>
       </ContentView>
 

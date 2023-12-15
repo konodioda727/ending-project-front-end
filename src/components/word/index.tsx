@@ -23,7 +23,7 @@ const Word: React.FC<WordProps> = props => {
   return (
     <>
       <div
-        className={`${className ? className : ''} word-${stat}`}
+        className={`${className ? className : ''} word-${stat} word-wrap`}
         {...restProps}
         style={{
           ...style,

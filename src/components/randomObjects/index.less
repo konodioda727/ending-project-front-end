@@ -25,7 +25,31 @@
   width: @smallSize;
   height: @smallSize;
 }
-@keyframes appear {
+.star-wrap {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+}
+.star-unmounting {
+  animation: star-disappear .8s ease-in-out forwards;
+  opacity: 0;
+}
+.star-invisible {
+  display: none;
+}
+@keyframes star-disappear {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 0;
+    transform: translateY(-2vh);
+  }
+}
+@keyframes star-appear {
   0% {
     opacity: 0;
     scale: 0;
@@ -35,7 +59,7 @@
     scale: 1;
   }
 }
-@keyframes rotate {
+@keyframes star-rotate {
   0% {
     transform: rotate(0deg);
     scale: 1;

@@ -52,7 +52,7 @@ export const View: React.FC<ViewProps> = props => {
           setAlive(stat === 'unmounting' ? 'invisible' : 'visible');
           clearTimeout(timer);
         },
-        animationTime ? animationTime * 1000 : 1200
+        animationTime ? animationTime * 1000 : 1400
       );
     }
   }, [stat]);
