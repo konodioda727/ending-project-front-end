@@ -17,24 +17,27 @@ const Star: React.FC<StarProps> = props => {
           left: left || 0,
           animation: `appear ${appear_interval || 1.2}s ease-in-out forwards ${
             delay || 0
-          }s, rotate 2s ease-in-out infinite`,
+          }s, rotate 2s ease-in-out infinite ${delay || 0}s`,
         }}
       />
     </>
   );
 };
 export default Star;
-// 二次函数增加边缘概率
+function sigmoid(x: number): number {
+  return 1 / (1 + Math.exp(-x));
+}
+// sigmoid函数增加边缘概率
 function biasedRandom() {
-  const r = Math.random();
-  return Math.pow(r, 2) * 98 + '%';
+  const r = Math.random() * 10 - 5;
+  return sigmoid(r) * 90 + '%';
 }
 export function GenerateStarConfigs(starNum: number): StarTypes[] {
   const res: StarTypes[] = [];
   const sizeDict: StarTypes['size'][] = ['medium', 'small', 'big'];
   for (let i = 0; i < starNum; i++) {
     res.push({
-      size: sizeDict[Math.random() * 2],
+      size: sizeDict[Math.round(Math.random() * 2)],
       top: biasedRandom(),
       left: biasedRandom(),
       delay: Math.random() * 2,

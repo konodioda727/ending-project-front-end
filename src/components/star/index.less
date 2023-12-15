@@ -1,5 +1,5 @@
-@bigSize: 30px;
-@mediumSize: 15px;
+@bigSize: 16px;
+@mediumSize: 13px;
 @smallSize: 10px;
 .star {
   width: @mediumSize;
@@ -12,6 +12,18 @@
 }
 .star-big, .star-medium, .star-small {
   .star;
+}
+.star-big {
+  width: @bigSize;
+  height: @bigSize;
+}
+.star-medium {
+  width: @bigSize;
+  height: @bigSize;
+}
+.star-small {
+  width: @smallSize;
+  height: @smallSize;
 }
 @keyframes appear {
   0% {

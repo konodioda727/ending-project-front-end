@@ -1,0 +1,36 @@
+.word-visible {
+  display: block;
+  opacity: 1;
+}
+.word-unmounting {
+  opacity: 1;
+  animation: unmounting .4s ease-in-out forwards;
+}
+.word-invisible {
+  display: none;
+  opacity: 0;
+}
+.word-mounting {
+  animation: mounting .4s ease-in-out forwards;
+  opacity: 0;
+}
+@keyframes unmounting {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-2vh);
+  }
+}
+@keyframes mounting {
+  0% {
+    opacity: 0;
+    transform: translateY(-2vh);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

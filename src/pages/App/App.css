@@ -41,7 +41,12 @@
 }
 
 .card {
+  position: absolute;
   padding: 2em;
+  z-index: 2000;
+  top: 60%;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .read-the-docs {

@@ -1,10 +1,10 @@
-import { useState } from 'react';
-import reactLogo from '../../assets/react.svg';
-import viteLogo from '/vite.svg';
+import React, { useState } from 'react';
 import GradientPage from '../../components/gradientPage';
 import './App.css';
+import ContentView, { View } from '../../components/contentView';
+import Word from '../../components/word';
 
-function App() {
+const App: React.FC = () => {
   const [count, setCount] = useState(0);
   document.addEventListener(
     'touchmove',
@@ -17,15 +17,20 @@ function App() {
   return (
     <>
       <GradientPage></GradientPage>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
+      <ContentView>
+        <View>
+          <Word style={{ position: 'absolute', top: '60px', left: '33px' }}>
+            123
+          </Word>
+          <Word style={{ position: 'absolute', top: '20px', left: '220px' }}>
+            123
+          </Word>
+        </View>
+        <View>
+          <div>489879</div>
+        </View>
+      </ContentView>
+
       <div className="card">
         <button
           onClick={() => {
@@ -37,11 +42,8 @@ function App() {
           count is {count}
         </button>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   );
-}
+};
 
 export default App;
