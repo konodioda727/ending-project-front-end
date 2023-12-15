@@ -26,10 +26,28 @@ const App: React.FC = () => {
           <Word style={{ position: 'absolute', top: '20px', left: '220px' }}>
             123
           </Word>
+          <Word style={{ position: 'absolute', top: '200px', left: '80px' }}>
+            123
+          </Word>
+          <Word style={{ position: 'absolute', top: '120px', left: '40px' }}>
+            123
+          </Word>
+          <Word style={{ position: 'absolute', top: '100px', left: '140px' }}>
+            123
+          </Word>
+          <Word style={{ position: 'absolute', top: '80px', left: '40px' }}>
+            123
+          </Word>
+          <Word style={{ position: 'absolute', top: '900px', left: '340px' }}>
+            123
+          </Word>
           <Stars></Stars>
         </View>
         <View>
           <div>489879</div>
+          <Word style={{ position: 'absolute', top: '20px', left: '220px' }}>
+            123
+          </Word>
           <Stars></Stars>
         </View>
       </ContentView>

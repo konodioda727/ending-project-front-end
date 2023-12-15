@@ -52,7 +52,7 @@ export const View: React.FC<ViewProps> = props => {
           setAlive(stat === 'unmounting' ? 'invisible' : 'visible');
           clearTimeout(timer);
         },
-        animationTime ? animationTime * 1000 : 1400
+        animationTime ? animationTime * 1000 : 4400
       );
     }
   }, [stat]);
@@ -70,7 +70,6 @@ export const View: React.FC<ViewProps> = props => {
         return React.cloneElement(child, {
           ...child.props,
           mountindex: index,
-          unmountindex: count - index,
           stat: alive,
         });
       })}

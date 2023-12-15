@@ -4,7 +4,6 @@ import './index.less';
 
 const Word: React.FC<WordProps> = props => {
   const {
-    unmountindex,
     style,
     mountindex,
     children,
@@ -13,12 +12,16 @@ const Word: React.FC<WordProps> = props => {
     wordSpeed,
     ...restProps
   } = props;
-  const speed = wordSpeed ? wordSpeed : 0.6;
+  const speed = wordSpeed ? wordSpeed : 0.8;
   const animationDelayTime = (): number => {
-    if (stat === 'unmounting' && unmountindex)
-      return (speed * unmountindex) / 2;
-    if (stat === 'mounting' && mountindex) return (speed * mountindex) / 2;
-    return 0;
+    let delay = 0;
+    if (mountindex != undefined) {
+      delay = (speed * mountindex) / 2;
+    }
+    if (stat === 'mounting' && mountindex != undefined) {
+      delay = (speed * mountindex) / 2 + 2;
+    }
+    return delay;
   };
   return (
     <>

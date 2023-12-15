@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { RandomObjectTypes, StarProps } from '../types/randomObjectTypes.ts';
 import star from '../../assets/stars.svg';
 import { GenerateRandomComponents } from './index.tsx';
+import './stars.less';
 
 function sigmoid(x: number): number {
   return 1 / (1 + Math.exp(-x));

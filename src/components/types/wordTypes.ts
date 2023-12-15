@@ -4,7 +4,6 @@ import { ViewProps } from './contentViewTypes.ts';
 export interface WordTypes {
   children: string;
   mountindex?: number;
-  unmountindex?: number;
   stat?: ViewProps['stat'];
   wordSpeed?: number;
 }

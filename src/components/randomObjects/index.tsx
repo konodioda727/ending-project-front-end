@@ -4,7 +4,7 @@ import {
   RandomObjectTypes,
 } from '../types/randomObjectTypes.ts';
 import star from '../../assets/stars.svg';
-import './index.less';
+import './stars.less';
 import { gen } from '../../utils/keyGenerator.ts';
 const RandomObject: React.FC<RandomObjectProps> = props => {
   const { configs, className } = props;
