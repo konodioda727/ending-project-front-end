@@ -31,8 +31,7 @@ const GradientPage: React.FC = () => {
     drawGradient(canvasRef);
     setInterval(() => {
       setStars(GenerateStarComponents(Math.random() * 6 + 6));
-      console.log('set');
-    }, 12000);
+    }, 10000);
   }, []);
   useEffect(() => {
     const handleRemove = () => {
