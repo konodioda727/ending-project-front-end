@@ -3,9 +3,6 @@ import GradientPage from '../../components/gradientPage';
 import './App.css';
 import ContentView from '../../components/contentView';
 import Entrance from '../entrance';
-import Word from '../../components/word';
-import { View } from '../../components/contentView';
-import MvPageButton from '../../components/mvPageButton';
 
 const App: React.FC = () => {
   document.addEventListener(
