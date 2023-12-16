@@ -1,0 +1,41 @@
+.image-mounting, .image-invisible, .image-unmounting, .image-visible {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  animation: all .4s ease-in-out .4s;
+}
+.image-mounting {
+  opacity: 0;
+}
+.image-unmounting {
+  opacity: 1;
+}
+.image-visible {
+  opacity: 1;
+  display: block;
+}
+.image-invisible {
+  opacity: 0;
+  display: none;
+}
+
+@keyframes image-mounting {
+  0% {
+    opacity: 0;
+    transform: translateY(-10vw);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes image-unmounting {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10vw);
+  }
+}

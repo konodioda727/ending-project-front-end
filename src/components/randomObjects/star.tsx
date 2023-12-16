@@ -31,7 +31,7 @@ export function GenerateStarConfigs(starNum: number): RandomObjectTypes[] {
 }
 
 export const Stars: React.FC<StarProps> = props => {
-  const { interval, stat } = props;
+  const { interval, stat, range } = props;
   const [renderChildren, setRenderChildren] = useState<React.ReactElement>(
     GenerateRandomComponents(8, GenerateStarConfigs)
   );
@@ -39,7 +39,12 @@ export const Stars: React.FC<StarProps> = props => {
     const timer = setInterval(
       () => {
         setRenderChildren(
-          GenerateRandomComponents(Math.random() * 6 + 6, GenerateStarConfigs)
+          GenerateRandomComponents(
+            range
+              ? Math.random() * (range[1] - range[0]) + range[0]
+              : Math.random() * 2 + 10,
+            GenerateStarConfigs
+          )
         );
       },
       interval ? interval : 10000

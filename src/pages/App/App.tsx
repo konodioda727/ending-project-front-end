@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import GradientPage from '../../components/gradientPage';
 import './App.css';
 import ContentView, { View } from '../../components/contentView';
 import Word from '../../components/word';
 import { Stars } from '../../components/randomObjects/star.tsx';
+import MvPageButton from '../../components/mvPageButton';
+import Image from '../../components/Image';
+import tmpImage from '../../assets/react.svg';
+import Entrance from '../entrance';
 
 const App: React.FC = () => {
-  const [count, setCount] = useState(0);
   document.addEventListener(
     'touchmove',
     function (event) {
@@ -19,10 +22,8 @@ const App: React.FC = () => {
     <>
       <GradientPage></GradientPage>
       <ContentView>
+        <Entrance></Entrance>
         <View>
-          <Word style={{ position: 'absolute', top: '60px', left: '33px' }}>
-            123
-          </Word>
           <Word style={{ position: 'absolute', top: '20px', left: '220px' }}>
             123
           </Word>
@@ -41,28 +42,33 @@ const App: React.FC = () => {
           <Word style={{ position: 'absolute', top: '900px', left: '340px' }}>
             123
           </Word>
-          <Stars></Stars>
+          <MvPageButton type={'mvPageVertically'}></MvPageButton>
+          <Image src={tmpImage}></Image>
+          <Stars range={[8, 16]}></Stars>
         </View>
         <View>
-          <div>489879</div>
           <Word style={{ position: 'absolute', top: '20px', left: '220px' }}>
             123
           </Word>
+          <Word style={{ position: 'absolute', top: '200px', left: '80px' }}>
+            123
+          </Word>
+          <Word style={{ position: 'absolute', top: '120px', left: '40px' }}>
+            123
+          </Word>
+          <Word style={{ position: 'absolute', top: '100px', left: '140px' }}>
+            123
+          </Word>
+          <Word style={{ position: 'absolute', top: '80px', left: '40px' }}>
+            123
+          </Word>
+          <Word style={{ position: 'absolute', top: '900px', left: '340px' }}>
+            123
+          </Word>
+          <MvPageButton type={'mvPageVertically'}></MvPageButton>
           <Stars></Stars>
         </View>
       </ContentView>
-
-      <div className="card">
-        <button
-          onClick={() => {
-            const event = new Event('mvPageVertically');
-            dispatchEvent(event);
-            setCount(count => count + 1);
-          }}
-        >
-          count is {count}
-        </button>
-      </div>
     </>
   );
 };

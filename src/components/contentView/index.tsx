@@ -11,8 +11,10 @@ const ContentView: React.FC<ContentViewProps> = props => {
     const retChildren = React.Children.map(children, (child, index) => {
       if (index + 1 === currentIndex)
         return React.cloneElement(child, { stat: 'unmounting' });
+
       if (index === currentIndex)
         return React.cloneElement(child, { stat: 'mounting' });
+
       return null;
     });
     setRenderChildren(retChildren);
@@ -44,15 +46,19 @@ export default ContentView;
 export const View: React.FC<ViewProps> = props => {
   const { stat, children, animationTime } = props;
   const [alive, setAlive] = useState<ViewProps['stat']>('invisible');
+  const [clickable, setClickable] = useState<boolean>(false);
   useEffect(() => {
     setAlive(stat);
     if (stat === 'unmounting' || stat === 'mounting') {
       const timer = setTimeout(
         () => {
           setAlive(stat === 'unmounting' ? 'invisible' : 'visible');
+          setClickable(true);
           clearTimeout(timer);
         },
-        animationTime ? animationTime * 1000 : 4400
+        animationTime
+          ? animationTime * 1000
+          : 600 * (React.Children.count(children) - 1)
       );
     }
   }, [stat]);
@@ -64,8 +70,9 @@ export const View: React.FC<ViewProps> = props => {
         if (child.type === MvPageButton)
           return React.cloneElement(child, {
             ...child.props,
-            index: count,
+            mountindex: count,
             stat: alive,
+            clickable: clickable,
           });
         return React.cloneElement(child, {
           ...child.props,

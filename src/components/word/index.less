@@ -4,21 +4,19 @@
 }
 .word-unmounting {
   opacity: 1;
-  animation: unmounting .2s ease-in-out forwards;
 }
 .word-invisible {
   display: none;
   opacity: 0;
 }
 .word-mounting {
-  animation: mounting .2s ease-in-out forwards ;
   opacity: 0;
 }
 .word-wrap {
   font-size: 3rem;
   color: white
 }
-@keyframes unmounting {
+@keyframes word-unmounting {
   0% {
     opacity: 1;
     transform: translateY(0);
@@ -28,7 +26,7 @@
     transform: translateY(-2vh);
   }
 }
-@keyframes mounting {
+@keyframes word-mounting {
   0% {
     opacity: 0;
     transform: translateY(-1vh);

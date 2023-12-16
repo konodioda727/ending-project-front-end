@@ -6,5 +6,6 @@ export interface WordTypes {
   mountindex?: number;
   stat?: ViewProps['stat'];
   wordSpeed?: number;
+  firstPage?: boolean;
 }
 export type WordProps = WordTypes & HTMLAttributes<HTMLDivElement>;
