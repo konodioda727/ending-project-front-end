@@ -6,7 +6,11 @@ export type ImageTypes = {
   stat?: ViewProps['stat'];
   delay?: number;
   animationTime?: number;
-  firstPage?: boolean;
+  noWait?: boolean;
+  animationType?: {
+    [key in ViewProps['stat'] as string]?: aniEndType;
+  };
 };
+export type aniEndType = 'infinite' | 'forwards' | 'backwards';
 
 export type ImageProps = ImageTypes & ImgHTMLAttributes<HTMLImageElement>;

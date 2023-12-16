@@ -10,21 +10,12 @@ const Word: React.FC<WordProps> = props => {
     stat,
     className,
     wordSpeed,
-    firstPage,
     ...restProps
   } = props;
-  const speed = wordSpeed ? wordSpeed : 0.6;
+  const speed = wordSpeed ? wordSpeed : 1;
   const animationDelayTime = (): number => {
-    let delay = 0;
-    if (mountindex != undefined) {
-      delay = (speed * mountindex) / 2;
-      if (stat === 'mounting') {
-        delay += 2;
-      }
-    }
-    if (firstPage && mountindex != undefined)
-      delay = (speed * mountindex) / 2 + 0.4;
-    return delay;
+    if (mountindex != undefined) return (speed * mountindex) / 2;
+    return 0;
   };
   return (
     <>
@@ -46,6 +37,5 @@ export default Word;
 
 Word.defaultProps = {
   className: '',
-  firstPage: false,
-  wordSpeed: 0.6,
+  wordSpeed: 1,
 };

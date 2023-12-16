@@ -2,26 +2,42 @@ import React, { ReactElement, useEffect, useState } from 'react';
 import { ContentViewProps, ViewProps } from '../types/contentViewTypes.ts';
 import './index.less';
 import MvPageButton from '../mvPageButton';
+import { gen } from '../../utils/keyGenerator.ts';
 
 const ContentView: React.FC<ContentViewProps> = props => {
   const { children } = props;
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [renderChildren, setRenderChildren] = useState<ReactElement[]>([]);
-  function EditRenderChildren() {
+  function EditRenderChildren(): ReactElement | undefined {
+    let toBeRendered;
     const retChildren = React.Children.map(children, (child, index) => {
-      if (index + 1 === currentIndex)
-        return React.cloneElement(child, { stat: 'unmounting' });
-
-      if (index === currentIndex)
-        return React.cloneElement(child, { stat: 'mounting' });
+      if (index + 1 === currentIndex) {
+        return React.cloneElement(child, {
+          stat: 'unmounting',
+          ...child.props,
+        });
+      }
+      if (index === currentIndex && index != 0) {
+        toBeRendered = child;
+        return React.cloneElement(child, {
+          ...child.props,
+          stat: 'invisible',
+        });
+      } else if (index === currentIndex) {
+        return React.cloneElement(child, {
+          ...child.props,
+          stat: 'mounting',
+        });
+      }
 
       return null;
     });
     setRenderChildren(retChildren);
+    return toBeRendered;
   }
 
   useEffect(() => {
-    EditRenderChildren();
+    const toBeRendered = EditRenderChildren();
     const handleChanged = async () => {
       setCurrentIndex(currentIndex + 1);
     };
@@ -34,6 +50,16 @@ const ContentView: React.FC<ContentViewProps> = props => {
     window.addEventListener('mvPageHorizontally', () =>
       handleChanged().then(null, null)
     );
+    window.addEventListener('unmounted', () => {
+      toBeRendered &&
+        setRenderChildren([
+          React.cloneElement(toBeRendered, {
+            ...toBeRendered.props,
+            stat: 'mounting',
+            key: gen.next().value,
+          }),
+        ]);
+    });
     return () => {
       window.removeEventListener('mvPageVertically', handleRemove);
       window.removeEventListener('mvPageHorizontally', handleRemove);
@@ -52,13 +78,17 @@ export const View: React.FC<ViewProps> = props => {
     if (stat === 'unmounting' || stat === 'mounting') {
       const timer = setTimeout(
         () => {
+          if (stat === 'unmounting') {
+            const eve = new Event('unmounted');
+            dispatchEvent(eve);
+          }
           setAlive(stat === 'unmounting' ? 'invisible' : 'visible');
           setClickable(true);
           clearTimeout(timer);
         },
         animationTime
           ? animationTime * 1000
-          : 600 * (React.Children.count(children) - 1)
+          : 600 * React.Children.count(children)
       );
     }
   }, [stat]);

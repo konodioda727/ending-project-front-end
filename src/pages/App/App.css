@@ -3,12 +3,12 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
-  /*overflow: hidden;*/
 }
 @font-face {
   font-family: 'customFont';
   src: url("../../assets/zcoolwenyiti Regular.ttf") format("truetype");
 }
+
 * {
   overflow: hidden;
   margin: 0;
