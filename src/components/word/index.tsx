@@ -4,7 +4,6 @@ import './index.less';
 
 const Word: React.FC<WordProps> = props => {
   const {
-    unmountindex,
     style,
     mountindex,
     children,
@@ -13,21 +12,19 @@ const Word: React.FC<WordProps> = props => {
     wordSpeed,
     ...restProps
   } = props;
-  const speed = wordSpeed ? wordSpeed : 0.6;
+  const speed = wordSpeed ? wordSpeed : 1;
   const animationDelayTime = (): number => {
-    if (stat === 'unmounting' && unmountindex)
-      return (speed * unmountindex) / 2;
-    if (stat === 'mounting' && mountindex) return (speed * mountindex) / 2;
+    if (mountindex != undefined) return (speed * mountindex) / 2;
     return 0;
   };
   return (
     <>
       <div
-        className={`${className ? className : ''} word-${stat}`}
+        className={`${className} word-${stat} word-wrap`}
         {...restProps}
         style={{
           ...style,
-          animation: `${stat} ${speed}s ease-in-out forwards ${animationDelayTime()}s`,
+          animation: `word-${stat} ${speed}s ease-in-out forwards ${animationDelayTime()}s`,
         }}
       >
         {children}
@@ -37,3 +34,8 @@ const Word: React.FC<WordProps> = props => {
 };
 
 export default Word;
+
+Word.defaultProps = {
+  className: '',
+  wordSpeed: 1,
+};

@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import GradientPage from '../../components/gradientPage';
 import './App.css';
-import ContentView, { View } from '../../components/contentView';
-import Word from '../../components/word';
+import ContentView from '../../components/contentView';
+import Entrance from '../entrance';
 
 const App: React.FC = () => {
-  const [count, setCount] = useState(0);
   document.addEventListener(
     'touchmove',
     function (event) {
@@ -18,30 +17,8 @@ const App: React.FC = () => {
     <>
       <GradientPage></GradientPage>
       <ContentView>
-        <View>
-          <Word style={{ position: 'absolute', top: '60px', left: '33px' }}>
-            123
-          </Word>
-          <Word style={{ position: 'absolute', top: '20px', left: '220px' }}>
-            123
-          </Word>
-        </View>
-        <View>
-          <div>489879</div>
-        </View>
+        <Entrance></Entrance>
       </ContentView>
-
-      <div className="card">
-        <button
-          onClick={() => {
-            const event = new Event('mvPageVertically');
-            dispatchEvent(event);
-            setCount(count => count + 1);
-          }}
-        >
-          count is {count}
-        </button>
-      </div>
     </>
   );
 };

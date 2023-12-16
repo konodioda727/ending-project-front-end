@@ -1,11 +1,12 @@
 import { ReactElement } from 'react';
 
 export interface ContentViewProps {
-  children: ReactElement<ViewProps>[] | ReactElement<ViewProps>;
+  children: ReactElement[] | ReactElement;
 }
 
 export interface ViewProps {
   stat?: 'invisible' | 'mounting' | 'unmounting' | 'visible';
+  lastCousinElemNum?: number;
   children: ReactElement | ReactElement[];
   animationTime?: number;
 }
