@@ -16,7 +16,7 @@ const Entrance: React.FC = props => {
       <Word className={'producted'}>
         <img
           className={'producted-img'}
-          alt="produly producted by muxi-studio"
+          alt="proudly producted by muxi-studio"
           src={logo}
         ></img>
       </Word>
