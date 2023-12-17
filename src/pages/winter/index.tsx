@@ -11,6 +11,7 @@ const Winter: React.FC = props => {
     <View {...props}>
       <Image
         src={snowLand}
+        className={'snowLand'}
       ></Image>
       <MvPageButton type={'mvPageHorizontally'}></MvPageButton>
     </View>
