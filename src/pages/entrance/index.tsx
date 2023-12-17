@@ -14,7 +14,11 @@ const Entrance: React.FC = props => {
       <Word className={'cover-title'}>@请输入昵称</Word>
       <Word className={'cover-sub-title'}>亲启.</Word>
       <Word className={'producted'}>
-        <img alt="produly producted by muxi-studio" src={logo}></img>
+        <img
+          className={'producted-img'}
+          alt="produly producted by muxi-studio"
+          src={logo}
+        ></img>
       </Word>
       <Word className={'report-title1'}>2023</Word>
       <Word className={'report-title2'}>年度报告</Word>
@@ -22,7 +26,7 @@ const Entrance: React.FC = props => {
         imageName={'envelope'}
         src={envelope}
         animationTime={2}
-        delay={1.8}
+        delay={0.8}
         className={'envelope'}
         animationType={{ visible: 'infinite' }}
       ></Image>
