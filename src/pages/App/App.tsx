@@ -6,13 +6,7 @@ import Entrance from '../entrance';
 import Winter from '../winter';
 
 const App: React.FC = () => {
-  document.addEventListener(
-    'touchmove',
-    function (event) {
-      event.preventDefault();
-    },
-    { passive: false }
-  );
+  document.body.style.overflow = 'hidden';
 
   return (
     <>

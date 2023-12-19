@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { drawGradient } from './canvas.ts';
 import { PageOffsetType } from '../types/gradientPageTypes.ts';
 import './index.less';
-
+/* eslint-disable react-hooks/exhaustive-deps */
 const GradientPage: React.FC = () => {
   const [offset, setOffset] = useState<PageOffsetType>({
     offsetY: 0,

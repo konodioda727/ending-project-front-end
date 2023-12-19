@@ -1,18 +1,21 @@
 import React from 'react';
 import { View } from '../../components/contentView';
-import Word from '../../components/word';
 import MvPageButton from '../../components/mvPageButton';
 import './index.less';
 import Image from '../../components/Image';
-import snowLand from '../../assets/snowLand.png'
+import snowLand from '../../assets/images/snowLand.png';
 
 const Winter: React.FC = props => {
+  document.addEventListener(
+    'touchmove',
+    function (event) {
+      event.preventDefault();
+    },
+    { passive: false }
+  );
   return (
     <View {...props}>
-      <Image
-        src={snowLand}
-        className={'snowLand'}
-      ></Image>
+      <Image src={snowLand} className={'snowLand'}></Image>
       <MvPageButton type={'mvPageHorizontally'}></MvPageButton>
     </View>
   );

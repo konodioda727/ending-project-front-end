@@ -3,8 +3,8 @@ import { View } from '../../components/contentView';
 import Word from '../../components/word';
 import MvPageButton from '../../components/mvPageButton';
 import { Stars } from '../../components/randomObjects/star.tsx';
-import logo from '../../assets/logo.png';
-import envelope from '../../assets/envelope.png';
+import logo from '../../assets/images/logo.png';
+import envelope from '../../assets/images/envelope.png';
 import './index.less';
 import Image from '../../components/Image';
 

@@ -3,7 +3,7 @@ import { ContentViewProps, ViewProps } from '../types/contentViewTypes.ts';
 import './index.less';
 import MvPageButton from '../mvPageButton';
 import { gen } from '../../utils/keyGenerator.ts';
-
+/* eslint-disable react-hooks/exhaustive-deps */
 const ContentView: React.FC<ContentViewProps> = props => {
   const { children } = props;
   const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -35,7 +35,6 @@ const ContentView: React.FC<ContentViewProps> = props => {
     setRenderChildren(retChildren);
     return toBeRendered;
   }
-
   useEffect(() => {
     const toBeRendered = EditRenderChildren();
     const handleChanged = async () => {

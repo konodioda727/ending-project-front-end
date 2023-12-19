@@ -1,7 +1,7 @@
 import React from 'react';
 import { MvPageButtonProps } from '../types/mvPageButtonTypes.ts';
-import Vertically from '../../assets/mvPageButtonVertical.png';
-import Horizontally from '../../assets/mvPageButtonHorizontal.png';
+import Vertically from '../../assets/images/mvPageButtonVertical.png';
+import Horizontally from '../../assets/images/mvPageButtonHorizontal.png';
 import './index.less';
 const MvPageButton: React.FC<MvPageButtonProps> = props => {
   const { className, stat, type, clickable, ...restProps } = props;
