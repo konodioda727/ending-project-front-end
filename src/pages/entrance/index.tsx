@@ -40,6 +40,7 @@ const Entrance: React.FC = props => {
       <Word className={'addtion2'}>属于我们的故事......</Word>
       <MvPageButton
         type={'mvPageHorizontally'}
+        mode={'dark'}
         onClick={() => handleClick()}
       ></MvPageButton>
       <Stars></Stars>

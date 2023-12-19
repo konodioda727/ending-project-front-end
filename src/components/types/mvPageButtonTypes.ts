@@ -7,6 +7,7 @@ export type MvPageButtonTypes = {
   stat?: ViewProps['stat'];
   mountindex?: number;
   onClick?: () => void;
+  mode?: 'dark' | 'light';
 };
 export type MvPageButtonProps = MvPageButtonTypes &
   Omit<HTMLAttributes<HTMLDivElement>, 'onClick'>;
