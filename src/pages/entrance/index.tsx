@@ -7,8 +7,14 @@ import logo from '../../assets/images/logo.png';
 import envelope from '../../assets/images/envelope.png';
 import './index.less';
 import Image from '../../components/Image';
+import defaultMusic from '../../assets/music/BackgroundMusic.mp3';
 
 const Entrance: React.FC = props => {
+  const audio = new Audio(defaultMusic);
+  const handleClick = () => {
+    audio.volume = 0.5;
+    audio.play();
+  };
   return (
     <View {...props}>
       <Word className={'cover-title'}>@请输入昵称</Word>
@@ -32,7 +38,10 @@ const Entrance: React.FC = props => {
       ></Image>
       <Word className={'addtion1'}>这是匣子陪您走过的一年时间里，</Word>
       <Word className={'addtion2'}>属于我们的故事......</Word>
-      <MvPageButton type={'mvPageHorizontally'}></MvPageButton>
+      <MvPageButton
+        type={'mvPageHorizontally'}
+        onClick={() => handleClick()}
+      ></MvPageButton>
       <Stars></Stars>
     </View>
   );

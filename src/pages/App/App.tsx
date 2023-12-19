@@ -7,7 +7,6 @@ import Winter from '../winter';
 
 const App: React.FC = () => {
   document.body.style.overflow = 'hidden';
-
   return (
     <>
       <GradientPage></GradientPage>

@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { MvPageButtonProps } from '../types/mvPageButtonTypes.ts';
 import Vertically from '../../assets/images/mvPageButtonVertical.png';
 import Horizontally from '../../assets/images/mvPageButtonHorizontal.png';
 import './index.less';
 const MvPageButton: React.FC<MvPageButtonProps> = props => {
-  const { className, stat, type, clickable, ...restProps } = props;
+  const { className, onClick, stat, type, clickable, ...restProps } = props;
+  const [clicked, setClicked] = useState<boolean>(false);
   const handleClick = () => {
-    const Eve = new Event(type ? type : 'mvPageVertically');
-    if (clickable) return dispatchEvent(Eve);
+    if (!clicked) {
+      console.log(111, stat);
+      const Eve = new Event(type ? type : 'mvPageVertically');
+      if (clickable) return dispatchEvent(Eve);
+      if (onClick) onClick();
+      setClicked(true);
+    }
   };
   return (
     <>

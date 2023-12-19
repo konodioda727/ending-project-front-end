@@ -6,6 +6,7 @@ export type MvPageButtonTypes = {
   type: 'mvPageVertically' | 'mvPageHorizontally';
   stat?: ViewProps['stat'];
   mountindex?: number;
+  onClick?: () => void;
 };
 export type MvPageButtonProps = MvPageButtonTypes &
-  HTMLAttributes<HTMLDivElement>;
+  Omit<HTMLAttributes<HTMLDivElement>, 'onClick'>;

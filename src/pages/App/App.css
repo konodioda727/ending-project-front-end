@@ -8,7 +8,7 @@
 }
 @font-face {
   font-family: 'customFont';
-  src: url("fonts/zcoolwenyiti Regular.ttf") format("truetype");
+  src: url("/src/assets/fonts/regular.ttf") format("truetype");
 }
 
 * {

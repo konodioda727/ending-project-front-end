@@ -75,6 +75,7 @@ export const View: React.FC<ViewProps> = props => {
   useEffect(() => {
     setAlive(stat);
     if (stat === 'unmounting' || stat === 'mounting') {
+      setClickable(false);
       const timer = setTimeout(
         () => {
           if (stat === 'unmounting') {
