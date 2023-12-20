@@ -50,6 +50,6 @@ export const Stars: React.FC<StarProps> = props => {
       interval ? interval : 10000
     );
     return () => clearInterval(timer);
-  }, []);
+  }, [interval, range]);
   return <div className={`star-wrap star-${stat}`}>{renderChildren}</div>;
 };

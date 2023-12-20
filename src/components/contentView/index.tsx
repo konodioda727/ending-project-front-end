@@ -3,22 +3,26 @@ import { ContentViewProps, ViewProps } from '../types/contentViewTypes.ts';
 import './index.less';
 import MvPageButton from '../mvPageButton';
 import { gen } from '../../utils/keyGenerator.ts';
-
+import useSwipeDetection from '../../hooks/swipeDetection.ts';
+/* eslint-disable react-hooks/exhaustive-deps */
 const ContentView: React.FC<ContentViewProps> = props => {
   const { children } = props;
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [renderChildren, setRenderChildren] = useState<ReactElement[]>([]);
   function EditRenderChildren(): ReactElement | undefined {
-    let toBeRendered;
+    let toBeRendered = undefined;
+    console.log(currentIndex);
+    if (currentIndex >= React.Children.count(children)) return undefined;
     const retChildren = React.Children.map(children, (child, index) => {
       if (index + 1 === currentIndex) {
         return React.cloneElement(child, {
-          stat: 'unmounting',
           ...child.props,
+          stat: 'unmounting',
         });
       }
       if (index === currentIndex && index != 0) {
         toBeRendered = child;
+        console.log('chi', child);
         return React.cloneElement(child, {
           ...child.props,
           stat: 'invisible',
@@ -29,13 +33,12 @@ const ContentView: React.FC<ContentViewProps> = props => {
           stat: 'mounting',
         });
       }
-
       return null;
     });
+    console.log(retChildren);
     setRenderChildren(retChildren);
     return toBeRendered;
   }
-
   useEffect(() => {
     const toBeRendered = EditRenderChildren();
     const handleChanged = async () => {
@@ -51,7 +54,7 @@ const ContentView: React.FC<ContentViewProps> = props => {
       handleChanged().then(null, null)
     );
     window.addEventListener('unmounted', () => {
-      toBeRendered &&
+      if (toBeRendered != undefined) {
         setRenderChildren([
           React.cloneElement(toBeRendered, {
             ...toBeRendered.props,
@@ -59,6 +62,7 @@ const ContentView: React.FC<ContentViewProps> = props => {
             key: gen.next().value,
           }),
         ]);
+      }
     });
     return () => {
       window.removeEventListener('mvPageVertically', handleRemove);
@@ -70,19 +74,28 @@ const ContentView: React.FC<ContentViewProps> = props => {
 export default ContentView;
 
 export const View: React.FC<ViewProps> = props => {
-  const { stat, children, animationTime } = props;
-  const [alive, setAlive] = useState<ViewProps['stat']>('invisible');
+  const { stat, children, animationTime, disableScroll } = props;
+  const [alive, setAlive] = useState<ViewProps['stat']>(stat);
   const [clickable, setClickable] = useState<boolean>(false);
+  useSwipeDetection('mvPageVertically', () => {
+    return disableScroll ? false : alive === 'visible';
+  });
+
   useEffect(() => {
     setAlive(stat);
-    if (stat === 'unmounting' || stat === 'mounting') {
+  }, [stat]);
+  useEffect(() => {
+    if (alive === 'unmounting' || alive === 'mounting') {
+      setClickable(false);
       const timer = setTimeout(
         () => {
-          if (stat === 'unmounting') {
+          if (alive === 'unmounting') {
+            setAlive('invisible');
             const eve = new Event('unmounted');
             dispatchEvent(eve);
+          } else {
+            setAlive('visible');
           }
-          setAlive(stat === 'unmounting' ? 'invisible' : 'visible');
           setClickable(true);
           clearTimeout(timer);
         },
@@ -91,7 +104,7 @@ export const View: React.FC<ViewProps> = props => {
           : 600 * React.Children.count(children)
       );
     }
-  }, [stat]);
+  }, [alive, children]);
 
   return (
     <>

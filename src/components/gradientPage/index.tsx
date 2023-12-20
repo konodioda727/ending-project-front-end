@@ -1,7 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { drawGradient } from './canvas.ts';
-import { PageOffsetType } from '../types/gradientPageTypes.ts';
+import { mvTypes, PageOffsetType } from '../types/gradientPageTypes.ts';
 import './index.less';
+import { gradientPageConfig } from '../../configs/gradientPageConfig.ts';
+/* eslint-disable react-hooks/exhaustive-deps */
 
 const GradientPage: React.FC = () => {
   const [offset, setOffset] = useState<PageOffsetType>({
@@ -11,17 +13,15 @@ const GradientPage: React.FC = () => {
   const [reverse, setReverse] = useState<-1 | 1>(-1);
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const handleClick = (type: 'vertical' | 'horizontal') => {
-    if (type === 'horizontal')
-      setOffset({ ...offset, offsetX: offset.offsetX + reverse * 50 });
-    if (type === 'vertical')
-      setOffset({ ...offset, offsetY: offset.offsetY + reverse * 100 });
-    if (offset.offsetX <= -100 || offset.offsetY <= -300) {
+  const handleClick = (mvType: mvTypes) => {
+    const { type, value } = gradientPageConfig[mvType];
+    if (offset[type] <= -3 * value) {
       setReverse(1);
     }
-    if (offset.offsetX >= 100 || offset.offsetY >= -100) {
+    if (offset[type] >= -1 * value) {
       setReverse(-1);
     }
+    setOffset({ ...offset, [type]: offset[type] + reverse * value });
   };
   useEffect(() => {
     drawGradient(canvasRef);

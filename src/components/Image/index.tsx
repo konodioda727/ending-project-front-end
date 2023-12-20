@@ -12,9 +12,10 @@ const Image: React.FC<ImageProps> = props => {
     animationType,
     ...restProps
   } = props;
+  console.log('img  ', stat);
   return (
     <div
-      className={` ${className} image-${stat}`}
+      className={`${className} commonImage-${stat}`}
       style={{
         animation: `${imageName}-${stat} ${animationTime}s ease-in-out ${
           delay as number
@@ -25,7 +26,8 @@ const Image: React.FC<ImageProps> = props => {
         }`,
       }}
     >
-      <img {...restProps} className="inner-image" alt={imageName}></img>
+      123123123123123
+      <img {...restProps} alt={'123'}></img>
     </div>
   );
 };
@@ -33,8 +35,8 @@ const Image: React.FC<ImageProps> = props => {
 export default Image;
 
 Image.defaultProps = {
-  delay: 0.4,
+  delay: 0,
   animationTime: 0.6,
-  imageName: 'image',
+  imageName: 'defaultImage',
   className: '',
 };

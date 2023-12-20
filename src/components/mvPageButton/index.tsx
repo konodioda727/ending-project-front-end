@@ -1,12 +1,15 @@
 import React from 'react';
 import { MvPageButtonProps } from '../types/mvPageButtonTypes.ts';
-import Vertically from '../../assets/mvPageButtonVertical.png';
-import Horizontally from '../../assets/mvPageButtonHorizontal.png';
+import Vertically from '../../assets/images/mvPageButtonVertical.png';
+import Horizontally from '../../assets/images/mvPageButtonHorizontal.png';
 import './index.less';
 const MvPageButton: React.FC<MvPageButtonProps> = props => {
-  const { className, stat, type, clickable, ...restProps } = props;
+  const { className, onClick, mode, stat, type, clickable, ...restProps } =
+    props;
   const handleClick = () => {
+    console.log(111, stat);
     const Eve = new Event(type ? type : 'mvPageVertically');
+    if (onClick) onClick();
     if (clickable) return dispatchEvent(Eve);
   };
   return (
@@ -21,6 +24,7 @@ const MvPageButton: React.FC<MvPageButtonProps> = props => {
       >
         <img
           className={'mv-page-button-image'}
+          style={{ filter: mode === 'dark' ? 'invert(40%)' : '' }}
           src={type === 'mvPageHorizontally' ? Horizontally : Vertically}
           alt={'back '}
         ></img>
