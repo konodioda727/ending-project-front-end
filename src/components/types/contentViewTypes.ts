@@ -9,4 +9,5 @@ export interface ViewProps {
   lastCousinElemNum?: number;
   children: ReactElement | ReactElement[];
   animationTime?: number;
+  disableScroll?: boolean;
 }

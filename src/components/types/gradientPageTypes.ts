@@ -1,4 +1,14 @@
+export type offsetType = 'offsetX' | 'offsetY';
+
 export type PageOffsetType = {
-  offsetX: number;
-  offsetY: number;
+  [key in offsetType]: number;
+};
+
+export type mvTypes = 'horizontal' | 'vertical';
+
+export type gradientPageConfigTypes = {
+  [key in mvTypes]: {
+    type: offsetType;
+    value: number;
+  };
 };

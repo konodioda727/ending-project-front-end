@@ -6,13 +6,6 @@ import Image from '../../components/Image';
 import snowLand from '../../assets/images/snowLand.png';
 
 const Winter: React.FC = props => {
-  document.addEventListener(
-    'touchmove',
-    function (event) {
-      event.preventDefault();
-    },
-    { passive: false }
-  );
   return (
     <View {...props}>
       <Image src={snowLand} className={'snowLand'}></Image>
