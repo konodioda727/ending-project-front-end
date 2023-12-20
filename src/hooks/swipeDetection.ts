@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-
+/* eslint-disable react-hooks/exhaustive-deps */
 const useSwipeDetection = (
   eventType: 'mvPageVertically' | 'mvPageHorizontally',
   dispatchFunction: () => boolean

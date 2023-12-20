@@ -8,7 +8,7 @@ import snowLand from '../../assets/images/snowLand.png';
 const Winter: React.FC = props => {
   return (
     <View {...props}>
-      <Image src={snowLand} className={'snowLand'}></Image>
+      <Image src={snowLand}></Image>
       <MvPageButton type={'mvPageHorizontally'}></MvPageButton>
     </View>
   );
