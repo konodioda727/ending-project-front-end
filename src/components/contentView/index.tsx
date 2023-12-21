@@ -70,13 +70,13 @@ export const View: React.FC<ViewProps> = props => {
     if (alive === 'unmounting' || alive === 'mounting') {
       setClickable(false);
       const timer = setTimeout(
-        () => {
+        async () => {
+          setAlive(alive === 'unmounting' ? 'invisible' : 'visible');
+          setClickable(true);
           if (alive === 'unmounting') {
             const eve = new Event('unmounted');
             dispatchEvent(eve);
           }
-          setAlive(alive === 'unmounting' ? 'invisible' : 'visible');
-          setClickable(true);
           clearTimeout(timer);
         },
         animationTime

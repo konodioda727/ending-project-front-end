@@ -43,7 +43,7 @@ const Entrance: React.FC = props => {
         mode={'dark'}
         onClick={() => handleClick()}
       ></MvPageButton>
-      <Stars></Stars>
+      <Stars range={[12, 16]}></Stars>
     </View>
   );
 };

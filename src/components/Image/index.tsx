@@ -12,7 +12,6 @@ const Image: React.FC<ImageProps> = props => {
     animationType,
     ...restProps
   } = props;
-  console.log('img  ', stat);
   return (
     <div
       className={`${className} commonImage-${stat}`}
