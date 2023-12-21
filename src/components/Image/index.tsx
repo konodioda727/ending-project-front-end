@@ -26,8 +26,7 @@ const Image: React.FC<ImageProps> = props => {
         }`,
       }}
     >
-      123123123123123
-      <img {...restProps} alt={'123'}></img>
+      <img {...restProps} className={'inner-image'} alt={'123'}></img>
     </div>
   );
 };

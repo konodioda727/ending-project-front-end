@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View } from '../contentView';
 import Word from '../word';
-import MvPageButton from '../mvPageButton';
 
 const FakeLoadingPage: React.FC = props => {
+  useEffect(() => {
+    const evt = new Event('mvPageVertically');
+    const timer = setTimeout(() => {
+      dispatchEvent(evt);
+      clearTimeout(timer);
+    }, 3000);
+  }, []);
+  //
   return (
     <View {...props}>
-      <Word>123123</Word>
-      <MvPageButton type={'mvPageVertically'}></MvPageButton>
-      {/*<div id="loading-container">*/}
-      {/*  <div id="loading-text">Loading...</div>*/}
-      {/*</div>*/}
+      <Word>loading...</Word>
     </View>
   );
 };

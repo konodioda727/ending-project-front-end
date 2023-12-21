@@ -5,6 +5,7 @@ import MvPageButton from '../mvPageButton';
 import useSwipeDetection from '../../hooks/swipeDetection.ts';
 import { pickChildrenNeedRender } from './utils.ts';
 import { Listeners } from '../../utils/listeners.ts';
+import { gen } from '../../utils/keyGenerator.ts';
 /* eslint-disable react-hooks/exhaustive-deps */
 const ContentView: React.FC<ContentViewProps> = props => {
   const { children } = props;
@@ -19,6 +20,7 @@ const ContentView: React.FC<ContentViewProps> = props => {
         React.cloneElement(invisibleComponentNeedRendered, {
           ...invisibleComponentNeedRendered.props,
           stat: 'mounting',
+          key: gen.next().value,
         }),
       ]);
     }
