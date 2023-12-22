@@ -9,14 +9,14 @@ import './index.less';
 import Image from '../../components/Image';
 import defaultMusic from '../../assets/music/BackgroundMusic.mp3';
 
-const Entrance: React.FC = props => {
+const Entrance: React.FC = () => {
   const audio = new Audio(defaultMusic);
   const handleClick = () => {
     audio.volume = 0.5;
     audio.play();
   };
   return (
-    <View {...props}>
+    <View>
       <Word className={'cover-title'}>@请输入昵称</Word>
       <Word className={'cover-sub-title'}>亲启.</Word>
       <Word className={'producted'}>
