@@ -4,7 +4,7 @@ import './App.css';
 import ContentView from '../../components/contentView';
 import Entrance from '../entrance';
 import Winter from '../winter';
-import LoadingPage from '../../components/loadingPage';
+import LoadingPage from '../loadingPage';
 
 const App: React.FC = () => {
   return (

@@ -9,9 +9,9 @@ import { Stars } from '../../components/randomObjects/star.tsx';
 const Winter: React.FC = props => {
   return (
     <View {...props}>
-      <Image src={snowLand}></Image>
-      <MvPageButton type={'mvPageHorizontally'}></MvPageButton>
-      <Stars range={[12, 16]}></Stars>
+      <Image src={snowLand} className={'snowLand'}></Image>
+      <MvPageButton type={'mvPageVertically'} mode={'dark'}></MvPageButton>
+      <Stars range={[10, 12]}></Stars>
     </View>
   );
 };

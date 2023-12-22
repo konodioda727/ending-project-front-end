@@ -1,9 +1,12 @@
 import React, { useEffect } from 'react';
-import { View } from '../contentView';
-import Word from '../word';
+import { View } from '../../components/contentView';
+import Word from '../../components/word';
 import { loadingPageConfig } from '../../configs/loadingPageConfig.ts';
-import { fileMapType, fileNameType } from '../types/loadingPageTypes.ts';
-import { Stars } from '../randomObjects/star.tsx';
+import {
+  fileMapType,
+  fileNameType,
+} from '../../components/types/loadingPageTypes.ts';
+import { Stars } from '../../components/randomObjects/star.tsx';
 
 const FakeLoadingPage: React.FC = props => {
   const { preloadConfig, loadingTime } = loadingPageConfig;
@@ -15,7 +18,7 @@ const FakeLoadingPage: React.FC = props => {
       clearTimeout(timer);
     }, loadingTime);
     return () => {};
-  }, []);
+  }, [loadingTime, preloadConfig]);
   return (
     <View {...props}>
       <Word>loading...</Word>

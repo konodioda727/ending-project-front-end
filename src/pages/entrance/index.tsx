@@ -39,11 +39,10 @@ const Entrance: React.FC = props => {
       <Word className={'addtion1'}>这是匣子陪您走过的一年时间里，</Word>
       <Word className={'addtion2'}>属于我们的故事......</Word>
       <MvPageButton
-        type={'mvPageHorizontally'}
-        mode={'dark'}
+        type={'mvPageVertically'}
         onClick={() => handleClick()}
       ></MvPageButton>
-      <Stars range={[12, 16]}></Stars>
+      <Stars range={[10, 12]}></Stars>
     </View>
   );
 };

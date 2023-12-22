@@ -8,6 +8,7 @@
   scale: 0;
   opacity: 0;
   transform: translateY(0);
+  z-index: 1;
   animation: star-visible .4s ease-in-out forwards, rotate 2s ease-in-out forwards;
 }
 .star-big, .star-medium, .star-small {
@@ -31,13 +32,7 @@
   height: 100vh;
   top: 0;
   left: 0;
-}
-.star-unmounting {
-  animation: star-disappear .8s ease-in-out forwards;
-  opacity: 0;
-}
-.star-invisible {
-  display: none;
+  z-index: 1;
 }
 .star-wrap-wrap-mounting {
   .star-wrap;

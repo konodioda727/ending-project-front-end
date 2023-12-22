@@ -1,71 +1,51 @@
-import React, { ReactElement, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ContentViewProps, ViewProps } from '../types/contentViewTypes.ts';
 import './index.less';
 import MvPageButton from '../mvPageButton';
 import useSwipeDetection from '../../hooks/swipeDetection.ts';
-import { pickChildrenNeedRender } from './utils.ts';
 import { Listeners } from '../../utils/listeners.ts';
-import { gen } from '../../utils/keyGenerator.ts';
+import useListeners from '../../hooks/useListeners.ts';
 /* eslint-disable react-hooks/exhaustive-deps */
 const ContentView: React.FC<ContentViewProps> = props => {
   const { children } = props;
   const [currentIndex, setCurrentIndex] = useState<number>(0);
-  const [renderChildren, setRenderChildren] = useState<ReactElement[]>([]);
-  const handleChanged = () => {
+  const handleUnomunted = () => {
     setCurrentIndex(currentIndex + 1);
   };
-  const handleUnomunted = (invisibleComponentNeedRendered: ReactElement) => {
-    if (invisibleComponentNeedRendered != undefined) {
-      setRenderChildren([
-        React.cloneElement(invisibleComponentNeedRendered, {
-          ...invisibleComponentNeedRendered.props,
-          stat: 'mounting',
-          key: gen.next().value,
-        }),
-      ]);
-    }
-  };
-  function EditRenderChildren(): ReactElement | undefined {
-    let toBeRendered = undefined;
-    if (currentIndex >= React.Children.count(children)) return undefined;
-    const retChildren = pickChildrenNeedRender(
-      children as ReactElement[],
-      currentIndex,
-      child => {
-        toBeRendered = child;
-      }
-    );
-    setRenderChildren(retChildren);
-    return toBeRendered;
-  }
   useEffect(() => {
-    const invisibleComponentNeedRendered = EditRenderChildren();
     const listeners = new Listeners([
-      { event: 'mvPageVertically', callback: handleChanged },
-      { event: 'mvPageHorizontally', callback: handleChanged },
       {
         event: 'unmounted',
-        callback: () =>
-          handleUnomunted(invisibleComponentNeedRendered as ReactElement),
+        callback: () => handleUnomunted(),
       },
     ]);
     return () => listeners.removeListeners();
   }, [currentIndex]);
-  return <>{renderChildren && renderChildren.map(item => item)}</>;
+  return (
+    <>
+      {React.Children.map(children, (child, index) => {
+        if (index === currentIndex) return child;
+        return null;
+      })}
+    </>
+  );
 };
 export default ContentView;
 
 export const View: React.FC<ViewProps> = props => {
-  const { stat, children, animationTime, disableScroll } = props;
-  const [alive, setAlive] = useState<ViewProps['stat']>(stat);
+  const { children, animationTime, disableScroll } = props;
+  const [alive, setAlive] = useState<ViewProps['stat']>('mounting');
   const [clickable, setClickable] = useState<boolean>(false);
+  const handleChangeStat = () => {
+    setAlive('unmounting');
+  };
   useSwipeDetection('mvPageVertically', () => {
     return disableScroll ? false : alive === 'visible';
   });
-
-  useEffect(() => {
-    setAlive(stat);
-  }, [stat]);
+  useListeners([
+    { event: 'mvPageVertically', callback: handleChangeStat },
+    { event: 'mvPageHorizontally', callback: handleChangeStat },
+  ]);
   useEffect(() => {
     if (alive === 'unmounting' || alive === 'mounting') {
       setClickable(false);

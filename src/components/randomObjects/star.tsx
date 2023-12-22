@@ -3,7 +3,6 @@ import { RandomObjectTypes, StarProps } from '../types/randomObjectTypes.ts';
 import star from '../../assets/stars.svg';
 import { GenerateRandomComponents } from './index.tsx';
 import './stars.less';
-import { ViewProps } from '../types/contentViewTypes.ts';
 
 function sigmoid(x: number): number {
   return 1 / (1 + Math.exp(-x));
@@ -14,14 +13,9 @@ function biasedRandom() {
   return sigmoid(r) * 80 + '%';
 }
 
-export function GenerateStarConfigs(
-  starNum: number,
-  stat: ViewProps['stat']
-): RandomObjectTypes[] {
+export function GenerateStarConfigs(starNum: number): RandomObjectTypes[] {
   const res: RandomObjectTypes[] = [];
   const sizeDict: RandomObjectTypes['size'][] = ['medium', 'small', 'big'];
-  console.log(stat);
-  if (stat === 'invisible' || stat === 'unmounting') return [];
   for (let i = 0; i < starNum; i++) {
     res.push({
       size: sizeDict[Math.round(Math.random() * 2)],
@@ -40,7 +34,7 @@ export function GenerateStarConfigs(
 export const Stars: React.FC<StarProps> = props => {
   const { interval, stat, range } = props;
   const [renderChildren, setRenderChildren] = useState<React.ReactElement>(
-    GenerateRandomComponents(GenerateStarConfigs(8, stat))
+    GenerateRandomComponents(GenerateStarConfigs(8))
   );
   useEffect(() => {
     const timer = setInterval(
@@ -50,8 +44,7 @@ export const Stars: React.FC<StarProps> = props => {
             GenerateStarConfigs(
               range
                 ? Math.random() * (range[1] - range[0]) + range[0]
-                : Math.random() * 2 + 10,
-              stat
+                : Math.random() * 2 + 10
             )
           )
         );
