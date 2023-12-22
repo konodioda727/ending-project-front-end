@@ -1,102 +1,62 @@
-import React, { ReactElement, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ContentViewProps, ViewProps } from '../types/contentViewTypes.ts';
 import './index.less';
 import MvPageButton from '../mvPageButton';
-import { gen } from '../../utils/keyGenerator.ts';
 import useSwipeDetection from '../../hooks/swipeDetection.ts';
+import { Listeners } from '../../utils/listeners.ts';
+import useListeners from '../../hooks/useListeners.ts';
 /* eslint-disable react-hooks/exhaustive-deps */
 const ContentView: React.FC<ContentViewProps> = props => {
   const { children } = props;
   const [currentIndex, setCurrentIndex] = useState<number>(0);
-  const [renderChildren, setRenderChildren] = useState<ReactElement[]>([]);
-  function EditRenderChildren(): ReactElement | undefined {
-    let toBeRendered = undefined;
-    console.log(currentIndex);
-    if (currentIndex >= React.Children.count(children)) return undefined;
-    const retChildren = React.Children.map(children, (child, index) => {
-      if (index + 1 === currentIndex) {
-        return React.cloneElement(child, {
-          ...child.props,
-          stat: 'unmounting',
-        });
-      }
-      if (index === currentIndex && index != 0) {
-        toBeRendered = child;
-        console.log('chi', child);
-        return React.cloneElement(child, {
-          ...child.props,
-          stat: 'invisible',
-        });
-      } else if (index === currentIndex) {
-        return React.cloneElement(child, {
-          ...child.props,
-          stat: 'mounting',
-        });
-      }
-      return null;
-    });
-    console.log(retChildren);
-    setRenderChildren(retChildren);
-    return toBeRendered;
-  }
+  const handleUnomunted = () => {
+    setCurrentIndex(currentIndex + 1);
+  };
   useEffect(() => {
-    const toBeRendered = EditRenderChildren();
-    const handleChanged = async () => {
-      setCurrentIndex(currentIndex + 1);
-    };
-    const handleRemove = () => {
-      console.log('removed listener');
-    };
-    window.addEventListener('mvPageVertically', () =>
-      handleChanged().then(null, null)
-    );
-    window.addEventListener('mvPageHorizontally', () =>
-      handleChanged().then(null, null)
-    );
-    window.addEventListener('unmounted', () => {
-      if (toBeRendered != undefined) {
-        setRenderChildren([
-          React.cloneElement(toBeRendered, {
-            ...toBeRendered.props,
-            stat: 'mounting',
-            key: gen.next().value,
-          }),
-        ]);
-      }
-    });
-    return () => {
-      window.removeEventListener('mvPageVertically', handleRemove);
-      window.removeEventListener('mvPageHorizontally', handleRemove);
-    };
+    const listeners = new Listeners([
+      {
+        event: 'unmounted',
+        callback: () => handleUnomunted(),
+      },
+    ]);
+    return () => listeners.removeListeners();
   }, [currentIndex]);
-  return <>{renderChildren && renderChildren.map(item => item)}</>;
+  return (
+    <>
+      {React.Children.map(children, (child, index) => {
+        if (index === currentIndex) return child;
+        return null;
+      })}
+    </>
+  );
 };
 export default ContentView;
 
 export const View: React.FC<ViewProps> = props => {
-  const { stat, children, animationTime, disableScroll } = props;
-  const [alive, setAlive] = useState<ViewProps['stat']>(stat);
+  const { children, animationTime, disableScroll } = props;
+  const [alive, setAlive] = useState<ViewProps['stat']>('mounting');
   const [clickable, setClickable] = useState<boolean>(false);
+  const handleChangeStat = () => {
+    setAlive('unmounting');
+  };
   useSwipeDetection('mvPageVertically', () => {
     return disableScroll ? false : alive === 'visible';
   });
-
-  useEffect(() => {
-    setAlive(stat);
-  }, [stat]);
+  useListeners([
+    { event: 'mvPageVertically', callback: handleChangeStat },
+    { event: 'mvPageHorizontally', callback: handleChangeStat },
+  ]);
   useEffect(() => {
     if (alive === 'unmounting' || alive === 'mounting') {
       setClickable(false);
       const timer = setTimeout(
-        () => {
+        async () => {
+          setAlive(alive === 'unmounting' ? 'invisible' : 'visible');
+          setClickable(true);
           if (alive === 'unmounting') {
-            setAlive('invisible');
             const eve = new Event('unmounted');
             dispatchEvent(eve);
-          } else {
-            setAlive('visible');
           }
-          setClickable(true);
           clearTimeout(timer);
         },
         animationTime

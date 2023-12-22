@@ -6,6 +6,7 @@ export type RandomObjectTypes = {
   left?: string;
   animation: string;
   src: string;
+  name?: string;
 };
 
 export interface RandomObjectProps {

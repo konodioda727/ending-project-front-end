@@ -11,3 +11,8 @@ export interface ViewProps {
   animationTime?: number;
   disableScroll?: boolean;
 }
+
+export type listenerType = {
+  event: string;
+  callback: (child?: ReactElement) => void;
+};

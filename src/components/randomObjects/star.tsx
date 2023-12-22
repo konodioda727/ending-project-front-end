@@ -7,11 +7,12 @@ import './stars.less';
 function sigmoid(x: number): number {
   return 1 / (1 + Math.exp(-x));
 }
-// sigmoid函数增加边缘概率
+
 function biasedRandom() {
   const r = Math.random() * 10 - 5;
-  return sigmoid(r) * 90 + '%';
+  return sigmoid(r) * 80 + '%';
 }
+
 export function GenerateStarConfigs(starNum: number): RandomObjectTypes[] {
   const res: RandomObjectTypes[] = [];
   const sizeDict: RandomObjectTypes['size'][] = ['medium', 'small', 'big'];
@@ -33,23 +34,24 @@ export function GenerateStarConfigs(starNum: number): RandomObjectTypes[] {
 export const Stars: React.FC<StarProps> = props => {
   const { interval, stat, range } = props;
   const [renderChildren, setRenderChildren] = useState<React.ReactElement>(
-    GenerateRandomComponents(8, GenerateStarConfigs)
+    GenerateRandomComponents(GenerateStarConfigs(8))
   );
   useEffect(() => {
     const timer = setInterval(
       () => {
         setRenderChildren(
           GenerateRandomComponents(
-            range
-              ? Math.random() * (range[1] - range[0]) + range[0]
-              : Math.random() * 2 + 10,
-            GenerateStarConfigs
+            GenerateStarConfigs(
+              range
+                ? Math.random() * (range[1] - range[0]) + range[0]
+                : Math.random() * 2 + 10
+            )
           )
         );
       },
       interval ? interval : 10000
     );
     return () => clearInterval(timer);
-  }, [interval, range]);
-  return <div className={`star-wrap star-${stat}`}>{renderChildren}</div>;
+  }, [interval, range, stat]);
+  return <div className={`star-wrap-wrap-${stat}`}>{renderChildren}</div>;
 };

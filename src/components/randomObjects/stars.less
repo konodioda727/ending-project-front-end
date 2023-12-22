@@ -8,7 +8,8 @@
   scale: 0;
   opacity: 0;
   transform: translateY(0);
-  animation: appear .4s ease-in-out forwards, rotate 2s ease-in-out forwards;
+  z-index: 1;
+  animation: star-visible .4s ease-in-out forwards, rotate 2s ease-in-out forwards;
 }
 .star-big, .star-medium, .star-small {
   .star;
@@ -31,22 +32,29 @@
   height: 100vh;
   top: 0;
   left: 0;
+  z-index: 1;
 }
-.star-unmounting {
-  animation: star-disappear .8s ease-in-out forwards;
+.star-wrap-wrap-mounting {
+  .star-wrap;
+  opacity: 1;
+}
+.star-wrap-wrap-visible {
+  .star-wrap;
+  opacity: 1;
+}
+.star-wrap-wrap-invisible {
   opacity: 0;
 }
-.star-invisible {
-  display: none;
+.star-wrap-wrap-unmounting {
+  opacity: 1;
+  animation: star-disappear .8s ease-in-out forwards;
 }
 @keyframes star-disappear {
   0% {
     opacity: 1;
-    transform: translateY(0);
   }
-  50% {
+  100% {
     opacity: 0;
-    transform: translateY(-2vh);
   }
 }
 @keyframes star-appear {
@@ -57,6 +65,11 @@
   50% {
     opacity: 1;
     scale: 1;
+  }
+}
+@keyframes star-unmounting {
+  100% {
+    opacity:0;
   }
 }
 @keyframes star-rotate {
