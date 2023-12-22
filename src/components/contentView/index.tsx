@@ -3,7 +3,6 @@ import { ContentViewProps, ViewProps } from '../types/contentViewTypes.ts';
 import './index.less';
 import MvPageButton from '../mvPageButton';
 import useSwipeDetection from '../../hooks/swipeDetection.ts';
-import { Listeners } from '../../utils/listeners.ts';
 import useListeners from '../../hooks/useListeners.ts';
 /* eslint-disable react-hooks/exhaustive-deps */
 const ContentView: React.FC<ContentViewProps> = props => {
@@ -12,15 +11,7 @@ const ContentView: React.FC<ContentViewProps> = props => {
   const handleUnomunted = () => {
     setCurrentIndex(currentIndex + 1);
   };
-  useEffect(() => {
-    const listeners = new Listeners([
-      {
-        event: 'unmounted',
-        callback: () => handleUnomunted(),
-      },
-    ]);
-    return () => listeners.removeListeners();
-  }, [currentIndex]);
+  useListeners([{ event: 'unmounted', callback: handleUnomunted }]);
   return (
     <>
       {React.Children.map(children, (child, index) => {
@@ -37,7 +28,7 @@ export const View: React.FC<ViewProps> = props => {
   const [alive, setAlive] = useState<ViewProps['stat']>('mounting');
   const [clickable, setClickable] = useState<boolean>(false);
   const handleChangeStat = () => {
-    setAlive('unmounting');
+    alive === 'visible' && setAlive('unmounting');
   };
   useSwipeDetection('mvPageVertically', () => {
     return disableScroll ? false : alive === 'visible';
@@ -51,20 +42,25 @@ export const View: React.FC<ViewProps> = props => {
       setClickable(false);
       const timer = setTimeout(
         async () => {
-          setAlive(alive === 'unmounting' ? 'invisible' : 'visible');
-          setClickable(true);
+          if (alive === 'mounting') {
+            setAlive('visible');
+            setClickable(true);
+          }
           if (alive === 'unmounting') {
             const eve = new Event('unmounted');
             dispatchEvent(eve);
           }
-          clearTimeout(timer);
         },
         animationTime
           ? animationTime * 1000
           : 600 * React.Children.count(children)
       );
+
+      return () => {
+        clearTimeout(timer);
+      };
     }
-  }, [alive, children]);
+  }, [alive, animationTime, children]);
 
   return (
     <>

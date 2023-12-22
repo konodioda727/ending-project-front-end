@@ -20,7 +20,6 @@ const useSwipeDetection = (
   const handleTouchEnd = () => {
     const swipeDistance = startY - endY;
     if (swipeDistance > 200) {
-      console.log(dispatchFunction());
       const evt = new Event(eventType);
       if (dispatchFunction()) {
         dispatchEvent(evt);

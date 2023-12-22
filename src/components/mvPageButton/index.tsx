@@ -7,7 +7,6 @@ const MvPageButton: React.FC<MvPageButtonProps> = props => {
   const { className, onClick, mode, stat, type, clickable, ...restProps } =
     props;
   const handleClick = () => {
-    console.log(111, stat);
     const Eve = new Event(type ? type : 'mvPageVertically');
     if (onClick) onClick();
     if (clickable) return dispatchEvent(Eve);

@@ -1,6 +1,5 @@
-export type fileMapType = {
-  [key in fileNameType]: fileMimeType;
-};
+import { ViewProps } from './contentViewTypes.ts';
 
-export type fileNameType = 'jpg' | 'jpeg' | 'svg' | 'gif' | 'png' | 'ttf';
-export type fileMimeType = 'image' | 'font';
+export interface LoadingPageProps {
+  stat?: ViewProps['stat'];
+}
