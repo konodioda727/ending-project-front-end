@@ -4,7 +4,6 @@ import './index.less';
 import MvPageButton from '../mvPageButton';
 import useSwipeDetection from '../../hooks/swipeDetection.ts';
 import useListeners from '../../hooks/useListeners.ts';
-/* eslint-disable react-hooks/exhaustive-deps */
 const ContentView: React.FC<ContentViewProps> = props => {
   const { children } = props;
   const [currentIndex, setCurrentIndex] = useState<number>(0);
