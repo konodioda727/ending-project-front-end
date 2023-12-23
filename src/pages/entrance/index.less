@@ -2,7 +2,7 @@
   font-family: 'xiaowei';
   src: url("fonts/xiaowei.ttf") format("truetype");
 }
-.addtion1, .addtion2, .cover-sub-title, .cover-title, .envelope {
+.addtion1, .addtion2, .cover-sub-title, .cover-title {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -47,45 +47,41 @@
   top: 54vh;
 }
 .envelope {
+  position: absolute;
   top: 20vh;
   height: 20vh;
   width: 60vw;
+  left: 20vw;
+  transform-origin: center;
 }
 
 @keyframes envelope-mounting {
   0% {
-    transform-origin: left;
     opacity: 0;
     scale: 0;
   }
   100% {
-    transform-origin: left;
     opacity: 1;
     scale: 1;
   }
 }
 @keyframes envelope-visible {
   0% {
-    transform-origin: left;
     scale: 1;
   }
   50% {
-    transform-origin: left;
     scale: 0.95;
   }
   95% {
-    transform-origin: left;
     scale: 1;
   }
 }
 @keyframes envelope-unmounting {
   0% {
-    transform-origin: left;
     opacity: 1;
     scale: 1;
   }
   100% {
-    transform-origin: left;
     opacity: 0;
     scale: 0;
   }

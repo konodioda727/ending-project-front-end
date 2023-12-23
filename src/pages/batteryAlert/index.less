@@ -1,0 +1,163 @@
+.angry-man {
+    position: absolute;
+    bottom: 26vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90vw;
+    transform-origin: left;
+}
+.battery-font-medium {
+    font-size: 1.4rem;
+}
+.battery-font-small {
+    font-size: 1rem;
+}
+.battery-font-large {
+    font-size: 2.4rem;
+}
+.batteryImg {
+    width: 40vw;
+    height: 8vh;
+    position: absolute;
+    bottom: 16vh;
+    left: 30vw;
+}
+.batteryImg-cover {
+    .batteryImg;
+    .inner-image {
+        z-index: 3 !important;
+    }
+    transform-origin: 4% ;
+}
+@keyframes battery-bar-mounting {
+    60% {
+        opacity: 0;
+        margin-bottom: 2vh;
+    }
+    100% {
+        opacity: 1;
+        margin-bottom: 0;
+    }
+}
+@keyframes battery-bar-unmounting {
+    60% {
+        opacity: 1;
+        margin-bottom: 0;
+    }
+    100% {
+        opacity: 0;
+        margin-bottom: 2vh;
+    }
+}
+@keyframes battery-mounting {
+    60% {
+        opacity: 0;
+        margin-bottom: 2vh;
+    }
+    100% {
+        opacity: 1;
+        margin-bottom: 0;
+    }
+}
+@keyframes battery-unmounting {
+    50% {
+        opacity: 1;
+        margin-bottom: 0;
+    }
+    100% {
+        opacity: 0;
+        margin-bottom: 2vh;
+    }
+}
+@keyframes angry-face-unmounting {
+    50% {
+        opacity: 1;
+        margin-bottom: 0;
+    }
+    100% {
+        opacity: 0;
+        margin-bottom: 2vh;
+    }
+}
+@keyframes angry-man-unmounting {
+    50% {
+        opacity: 1;
+        margin-bottom: 0;
+    }
+    100% {
+        opacity: 0;
+        margin-bottom: 2vh;
+    }
+}
+@keyframes battery-bar-visible {
+    0% {
+        transform: scaleX(100%);
+        opacity: 1;
+    }
+    50% {
+        transform: scaleX(20%);
+        opacity: .4;
+    }
+}
+@keyframes angry-face-mounting {
+    70% {
+        opacity: 0;
+        margin-bottom: 2vh;
+    }
+    100% {
+        opacity: 1;
+        margin-bottom: 0;
+    }
+}
+@keyframes angry-man-mounting {
+    70% {
+        opacity: 0;
+        margin-bottom: 2vh;
+    }
+    100% {
+        opacity: 1;
+        margin-bottom: 0;
+    }
+}
+@keyframes angry-face-visible {
+    0% {
+        filter: none;
+        scale: 1;
+    }
+    50% {
+        filter:brightness(70%) saturate(200%) contrast(120%);
+        scale: 1.2;
+        transform: translateY(-2vh) translateX(-50%);
+    }
+}
+@keyframes angry-man-visible {
+    0% {
+        scale: 1;
+    }
+    50% {
+        scale: 1.2;
+        transform: translateY(-2vh) translateX(-50%);
+    }
+}
+.battery-text-1 {
+    position: absolute;
+    top: 5%;
+    left: 10%;
+}
+.battery-text-2 {
+    position: absolute;
+    top: 15%;
+    left: 10%;
+}
+.battery-text-3 {
+    position: absolute;
+    top: 20%;
+    left: 10%;
+}
+.battery-text-4 {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    width: 80vw;
+    transform: translateX(-50%);
+}

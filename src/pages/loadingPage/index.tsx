@@ -23,7 +23,7 @@ export const Load: React.FC<LoadingPageProps> = props => {
       const evt = new Event('mvPageVertically');
       if (stat === 'visible') dispatchEvent(evt);
     });
-  }, [stat, document.fonts.ready]);
+  }, [stat]);
 
   return <></>;
 };

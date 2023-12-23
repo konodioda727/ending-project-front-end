@@ -5,6 +5,7 @@ import ContentView from '../../components/contentView';
 import Entrance from '../entrance';
 import Winter from '../winter';
 import LoadingPage from '../loadingPage';
+import BatteryAlert from '../batteryAlert';
 
 const App: React.FC = () => {
   return (
@@ -14,7 +15,7 @@ const App: React.FC = () => {
         <LoadingPage></LoadingPage>
         <Entrance></Entrance>
         <Winter></Winter>
-        <Winter></Winter>
+        <BatteryAlert></BatteryAlert>
       </ContentView>
     </>
   );
