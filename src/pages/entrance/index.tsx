@@ -42,7 +42,7 @@ const Entrance: React.FC = () => {
         type={'mvPageVertically'}
         onClick={() => handleClick()}
       ></MvPageButton>
-      <Stars range={[10, 12]}></Stars>
+      <Stars></Stars>
     </View>
   );
 };

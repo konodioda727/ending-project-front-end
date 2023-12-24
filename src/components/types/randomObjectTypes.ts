@@ -17,5 +17,9 @@ export interface RandomObjectProps {
 export interface StarProps {
   interval?: number;
   stat?: ViewProps['stat'];
-  range?: number[];
+  numRange?: number[];
+  posRange?: {
+    x: [min: number, max: number];
+    y: [min: number, max: number];
+  };
 }

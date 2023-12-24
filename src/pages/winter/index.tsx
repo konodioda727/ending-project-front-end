@@ -11,7 +11,7 @@ const Winter: React.FC = () => {
     <View>
       <Image src={snowLand} className={'snowLand'}></Image>
       <MvPageButton type={'mvPageVertically'} mode={'dark'}></MvPageButton>
-      <Stars range={[10, 12]}></Stars>
+      <Stars></Stars>
     </View>
   );
 };
