@@ -22,7 +22,7 @@ export function GenerateStarConfigs(
   const genePos = (posRange: StarProps['posRange'], axis: 'x' | 'y') => {
     return `${
       posRange
-        ? biasedRandom() * (posRange[axis][1] - posRange[axis][0]) +
+        ? (biasedRandom() * (posRange[axis][1] - posRange[axis][0])) / 100 +
           posRange[axis][0]
         : biasedRandom()
     }%`;
@@ -30,7 +30,7 @@ export function GenerateStarConfigs(
   for (let i = 0; i < starNum; i++) {
     res.push({
       size: sizeDict[Math.round(Math.random() * 2)],
-      top: genePos(posRange, 'x'),
+      top: genePos(posRange, 'y'),
       left: genePos(posRange, 'x'),
       animation: `star-appear ${Math.random() * 5 + 3}s ease-in-out forwards ${
         Math.random() * 2 + 1
@@ -45,7 +45,9 @@ export function GenerateStarConfigs(
 export const Stars: React.FC<StarProps> = props => {
   const { interval, stat, numRange, posRange } = props;
   const [renderChildren, setRenderChildren] = useState<React.ReactElement>(
-    GenerateRandomComponents(GenerateStarConfigs(8, posRange))
+    GenerateRandomComponents(
+      GenerateStarConfigs(numRange ? numRange[1] : 8, posRange)
+    )
   );
   useEffect(() => {
     const starNumRange = numRange
