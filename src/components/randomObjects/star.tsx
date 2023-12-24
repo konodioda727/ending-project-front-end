@@ -10,17 +10,28 @@ function sigmoid(x: number): number {
 
 function biasedRandom() {
   const r = Math.random() * 10 - 5;
-  return sigmoid(r) * 80 + '%';
+  return sigmoid(r) * 80;
 }
 
-export function GenerateStarConfigs(starNum: number): RandomObjectTypes[] {
+export function GenerateStarConfigs(
+  starNum: number,
+  posRange?: StarProps['posRange']
+): RandomObjectTypes[] {
   const res: RandomObjectTypes[] = [];
   const sizeDict: RandomObjectTypes['size'][] = ['medium', 'small', 'big'];
+  const genePos = (posRange: StarProps['posRange'], axis: 'x' | 'y') => {
+    return `${
+      posRange
+        ? biasedRandom() * (posRange[axis][1] - posRange[axis][0]) +
+          posRange[axis][0]
+        : biasedRandom()
+    }%`;
+  };
   for (let i = 0; i < starNum; i++) {
     res.push({
       size: sizeDict[Math.round(Math.random() * 2)],
-      top: biasedRandom(),
-      left: biasedRandom(),
+      top: genePos(posRange, 'x'),
+      left: genePos(posRange, 'x'),
       animation: `star-appear ${Math.random() * 5 + 3}s ease-in-out forwards ${
         Math.random() * 2 + 1
       }s, 
@@ -32,26 +43,23 @@ export function GenerateStarConfigs(starNum: number): RandomObjectTypes[] {
 }
 
 export const Stars: React.FC<StarProps> = props => {
-  const { interval, stat, range } = props;
+  const { interval, stat, numRange, posRange } = props;
   const [renderChildren, setRenderChildren] = useState<React.ReactElement>(
-    GenerateRandomComponents(GenerateStarConfigs(8))
+    GenerateRandomComponents(GenerateStarConfigs(8, posRange))
   );
   useEffect(() => {
+    const starNumRange = numRange
+      ? Math.random() * (numRange[1] - numRange[0]) + numRange[0]
+      : Math.random() * 2 + 10;
     const timer = setInterval(
       () => {
         setRenderChildren(
-          GenerateRandomComponents(
-            GenerateStarConfigs(
-              range
-                ? Math.random() * (range[1] - range[0]) + range[0]
-                : Math.random() * 2 + 10
-            )
-          )
+          GenerateRandomComponents(GenerateStarConfigs(starNumRange, posRange))
         );
       },
       interval ? interval : 10000
     );
     return () => clearInterval(timer);
-  }, [interval, range, stat]);
+  }, [interval, numRange, stat, posRange]);
   return <div className={`star-wrap-wrap-${stat}`}>{renderChildren}</div>;
 };
