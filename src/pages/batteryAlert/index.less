@@ -161,3 +161,37 @@
     width: 80vw;
     transform: translateX(-50%);
 }
+.battery-alert {
+    position: absolute;
+    top: 54%;
+    width: 60vw;
+    left: 20vw;
+}
+@keyframes battery-alert-visible {
+    50% {
+        scale: 1.2;
+    }
+    100% {
+        scale: 1;
+    }
+}
+@keyframes battery-alert-mounting {
+    70% {
+        margin-top: -2vh;
+        opacity: 0;
+    }
+    100% {
+        margin-top: 0;
+        opacity: 1;
+    }
+}
+@keyframes battery-alert-unmounting {
+    50% {
+        margin-top: 0;
+        opacity: 1;
+    }
+    100% {
+        margin-top: -2vh;
+        opacity: 0;
+    }
+}
