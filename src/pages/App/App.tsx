@@ -12,10 +12,10 @@ const App: React.FC = () => {
     <>
       <GradientPage></GradientPage>
       <ContentView>
-        {/*<LoadingPage></LoadingPage>*/}
-        {/*<Entrance></Entrance>*/}
-        {/*<Winter></Winter>*/}
+        <LoadingPage></LoadingPage>
+        <Entrance></Entrance>
         <BatteryAlert></BatteryAlert>
+        <Winter></Winter>
       </ContentView>
     </>
   );
