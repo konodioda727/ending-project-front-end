@@ -18,7 +18,7 @@ const Winter: React.FC = () => {
       <Word className={'name-ask'}>你的名字是？</Word>
       <Word><input type="text" className={'name-input'} value={nikename} onChange={(e)=>setnickename(e.target.value)} placeholder='请输入你的名字'/></Word>
       <Word><div className={`name-${nikename==''?'unready':'ready'}`} onClick={()=>{if(nikename)dispatchEvent(Eve)}}>生成我的年度报告</div></Word>
-      <Stars numRange={[4,7]} posRange={{x:[0.3,0.7],y:[0.1,0.3]}}></Stars>
+      <Stars numRange={[4,7]} posRange={{x:[20,80],y:[10,40]}}></Stars>
     </View>
   );
 };

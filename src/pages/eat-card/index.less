@@ -1,0 +1,75 @@
+.cards{
+    position: absolute;
+    width: 80vw;
+    top: 23vh;
+    left: 10vw;
+}
+.card-word-1{
+    position: absolute;
+    top: 7vh;
+    left: 13vw;
+    font-size: 7vw;
+}
+.card-word-2{
+    position: absolute;
+    top: 14vh;
+    left: 13vw;
+    font-size: 7vw;
+}
+.card-word-3{
+    position: absolute;
+    top: 22vh;
+    left: 13vw;
+    font-size: 7vw;
+    color: #FFF781;
+}
+.card-word-4{
+    position: absolute;
+    bottom: 21vh;
+    left: 9vw;
+    font-size: 7vw;
+}
+.card-word-5{
+    position: absolute;
+    bottom:17vh;
+    left: 9vw;
+    font-size: 7vw;
+}
+.card-word-6{
+    position: absolute;
+    bottom:10vh;
+    left: 19vw;
+    font-size: 7vw;
+    color: #FFF781;
+}
+@keyframes cards-mounting {
+    0% {
+      opacity: 0;
+      scale: 0;
+    }
+    100% {
+      opacity: 1;
+      scale: 1;
+    }
+  }
+  @keyframes cards-visible {
+    0% {
+      scale: 1;
+    }
+    50% {
+      scale: 0.95;
+    }
+    95% {
+      scale: 1;
+    }
+  }
+  @keyframes cards-unmounting {
+    0% {
+      opacity: 1;
+      scale: 1;
+    }
+    100% {
+      opacity: 0;
+      scale: 0;
+    }
+  }
