@@ -11,6 +11,9 @@ import defaultMusic from '../../assets/music/BackgroundMusic.mp3';
 
 const Entrance: React.FC = () => {
   const audio = new Audio(defaultMusic);
+  audio.onended = function () {
+    audio.play();
+  };
   const handleClick = () => {
     audio.volume = 0.5;
     audio.play();
@@ -42,7 +45,7 @@ const Entrance: React.FC = () => {
         type={'mvPageVertically'}
         onClick={() => handleClick()}
       ></MvPageButton>
-      <Stars numRange={[1, 1]} posRange={{ x: [80, 90], y: [20, 40] }}></Stars>
+      <Stars></Stars>
     </View>
   );
 };

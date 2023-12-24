@@ -6,6 +6,7 @@ import Entrance from '../entrance';
 import Winter from '../winter';
 import LoadingPage from '../loadingPage';
 import BatteryAlert from '../batteryAlert';
+import ElectronicBike from '../electronicBike';
 
 const App: React.FC = () => {
   return (
@@ -16,6 +17,7 @@ const App: React.FC = () => {
         <Entrance></Entrance>
         <BatteryAlert></BatteryAlert>
         <Winter></Winter>
+        <ElectronicBike></ElectronicBike>
       </ContentView>
     </>
   );
