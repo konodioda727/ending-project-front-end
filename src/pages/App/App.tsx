@@ -14,8 +14,8 @@ const App: React.FC = () => {
       <ContentView>
         <LoadingPage></LoadingPage>
         <Entrance></Entrance>
-        <Winter></Winter>
         <BatteryAlert></BatteryAlert>
+        <Winter></Winter>
       </ContentView>
     </>
   );
