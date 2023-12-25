@@ -9,14 +9,7 @@ const Charts: React.FC<ChartProps> = props => {
   useEffect(() => {
     const chartDom = document.getElementById(elemID);
     const myChart = echarts.init(chartDom);
-    const option = defaultOption;
-    const optionSeries = option.series as echarts.SeriesOption;
-    if (optionSeries && type && data) {
-      optionSeries.type = type;
-      optionSeries.data = data;
-    }
-
-    optionSeries && myChart.setOption(option);
+    myChart.setOption(defaultOption);
   }, [data, elemID, type]);
 
   return (

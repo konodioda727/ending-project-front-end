@@ -11,10 +11,11 @@
 }
 .OrderedElem-mounting {
   opacity: 0;
+  z-index: 5;
 }
 .OrderedElem-wrap {
   font-size: 3rem;
-  color: white
+  color: white;
 }
 @keyframes OrderedElem-unmounting {
   0% {
@@ -33,10 +34,12 @@
     opacity: 0;
     margin-top:-2vh;
     margin-bottom: 2vh;
+    z-index: 5 ;
   }
   100% {
     opacity: 1;
     margin-top: 0;
     margin-bottom: 0;
+    z-index: 5;
   }
 }

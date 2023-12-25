@@ -8,15 +8,20 @@ export function GenerateStarConfigs(
   elemNum: number,
   posRange?: RandomElemProps['posRange']
 ) {
-  return GenerateConfigs(
-    elemNum,
-    star,
-    `star-appear ${Math.random() * 5 + 3}s ease-in-out forwards ${
-      Math.random() * 2 + 1
-    }s, 
-      star-rotate 2s ease-in-out infinite ${Math.random() * 2}s`,
-    posRange
-  );
+  const animationList: string[] = [];
+  for (let i = 0; i < elemNum; i++) {
+    animationList.push(
+      `star-appear ${Math.random() * 5 + 3}s ease-in-out forwards ${
+        Math.random() * 2 + 1
+      }s, star-rotate 2s ease-in-out infinite ${Math.random() * 2}s`
+    );
+  }
+  return GenerateConfigs({
+    elemNum: elemNum,
+    src: star,
+    animation: animationList,
+    posRange: posRange,
+  });
 }
 export const Stars: React.FC<RandomElemProps> = props => {
   const { interval, stat, numRange, posRange } = props;

@@ -23,3 +23,11 @@ export interface RandomElemProps {
     y: [min: number, max: number];
   };
 }
+export type GeneConfigTypes = {
+  elemNum: number;
+  src: string;
+  animation: string[];
+  posRange?: RandomElemProps['posRange'];
+  name?: string;
+  biasedDom?: () => number;
+};

@@ -13,6 +13,7 @@ import EatCard from '../eat-card';
 import RankCover from '../rankCover';
 import DinningHall from '../dinningHall';
 import NeverGoDinningHall from '../neverGoDinningHall';
+import Spent from '../spent';
 
 const App: React.FC = () => {
   return (
@@ -27,9 +28,10 @@ const App: React.FC = () => {
         <Winter></Winter>
         <EatCard></EatCard>
         <Study></Study>
-        <RankCover></RankCover>
         <DinningHall></DinningHall>
         <NeverGoDinningHall></NeverGoDinningHall>
+        <RankCover></RankCover>
+        <Spent></Spent>
       </ContentView>
     </>
   );

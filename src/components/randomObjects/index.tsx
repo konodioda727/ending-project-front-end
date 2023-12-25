@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  GeneConfigTypes,
   RandomElemProps,
   RandomObjectProps,
   RandomObjectTypes,
@@ -46,20 +47,17 @@ function biasedRandom() {
   return sigmoid(r) * 80;
 }
 
-export function GenerateConfigs(
-  elemNum: number,
-  src: string,
-  animation: string,
-  posRange?: RandomElemProps['posRange']
-): RandomObjectTypes[] {
+export function GenerateConfigs(props: GeneConfigTypes): RandomObjectTypes[] {
   const res: RandomObjectTypes[] = [];
   const sizeDict: RandomObjectTypes['size'][] = ['medium', 'small', 'big'];
+  const { name, elemNum, posRange, src, animation, biasedDom } = props;
   const genePos = (posRange: RandomElemProps['posRange'], axis: 'x' | 'y') => {
+    const bias = biasedDom || biasedRandom;
     return `${
       posRange
-        ? (biasedRandom() * (posRange[axis][1] - posRange[axis][0])) / 100 +
+        ? (bias() * (posRange[axis][1] - posRange[axis][0])) / 100 +
           posRange[axis][0]
-        : biasedRandom()
+        : bias()
     }%`;
   };
   for (let i = 0; i < elemNum; i++) {
@@ -67,8 +65,9 @@ export function GenerateConfigs(
       size: sizeDict[Math.round(Math.random() * 2)],
       top: genePos(posRange, 'y'),
       left: genePos(posRange, 'x'),
-      animation: animation,
+      animation: animation[i],
       src: src,
+      name: name,
     });
   }
   return res;

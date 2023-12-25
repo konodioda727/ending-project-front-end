@@ -1,0 +1,43 @@
+@highlightTextColor: #FDF4BC;
+@SpentTextMedium: 1.8rem;
+@SpentTextLarge: 2.8rem;
+.spent-text-1, .spent-text-2, .spent-text-3, .spent-text-4, .spent-text-5 {
+  position: absolute;
+  font-size: @SpentTextMedium;
+  z-index: 3;
+}
+.spent-text-1 {
+  top: 10%;
+  left: 5%;
+}
+.spent-text-2 {
+  top: 18%;
+  left: 5%;
+}
+.spent-text-3 {
+  top: 24%;
+  left: 30%;
+}
+.spent-text-4 {
+  left: 10%;
+  top: 30%;
+}
+.spent-text-5 {
+  top: 36%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: @SpentTextLarge;
+  color: @highlightTextColor;
+}
+.spent-chart {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80vw;
+  height: 60vh;
+  z-index: 5 !important;
+  canvas {
+    z-index: 5;
+  }
+}
