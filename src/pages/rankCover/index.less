@@ -1,0 +1,55 @@
+.ccnubox-rankcover{
+    width: 90vw;
+    position: absolute;
+    top: 2vh;
+    left: -30vw;
+}
+.rankCover-word1{
+    font-size: 6vw;
+    position: absolute;
+    bottom: 45vh;
+    right: 25vw;
+}
+.rankCover-word2{
+    font-size: 6vw;
+    position: absolute;
+    bottom: 35vh;
+    right: 20vw;
+}
+.rankCover-word3{
+    font-size: 6vw;
+    position: absolute;
+    bottom: 25vh;
+    right: 15vw;
+}
+@keyframes ccnubox-rankcover-mounting {
+    0% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 0.3;
+    }
+  }
+@keyframes ccnubox-rankcover-visible  {
+    0%{
+        opacity: 0.3;
+    }
+    50%{
+        opacity: 0.6;
+    }
+    100%{
+        opacity: 0.3;
+    }
+}
+@keyframes ccnubox-rankcover-unmounting {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(150%);
+    opacity: 0;
+  }
+  }
