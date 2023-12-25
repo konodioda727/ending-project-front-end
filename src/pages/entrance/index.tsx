@@ -1,36 +1,27 @@
 import React from 'react';
 import { View } from '../../components/contentView';
-import Word from '../../components/word';
+import OrderedElem from '../../components/OrderedElem';
 import MvPageButton from '../../components/mvPageButton';
 import { Stars } from '../../components/randomObjects/star.tsx';
 import logo from '../../assets/images/logo.png';
 import envelope from '../../assets/images/envelope.png';
 import './index.less';
 import Image from '../../components/Image';
-import defaultMusic from '../../assets/music/BackgroundMusic.mp3';
 
 const Entrance: React.FC = () => {
-  const audio = new Audio(defaultMusic);
-  audio.onended = function () {
-    audio.play();
-  };
-  const handleClick = () => {
-    audio.volume = 0.5;
-    audio.play();
-  };
   return (
     <View>
-      <Word className={'cover-title'}>@请输入昵称</Word>
-      <Word className={'cover-sub-title'}>亲启.</Word>
-      <Word className={'producted'}>
+      <OrderedElem className={'cover-title'}>@请输入昵称</OrderedElem>
+      <OrderedElem className={'cover-sub-title'}>亲启.</OrderedElem>
+      <OrderedElem className={'producted'}>
         <img
           className={'producted-img'}
           alt="proudly producted by muxi-studio"
           src={logo}
         ></img>
-      </Word>
-      <Word className={'report-title1'}>2023</Word>
-      <Word className={'report-title2'}>年度报告</Word>
+      </OrderedElem>
+      <OrderedElem className={'report-title1'}>2023</OrderedElem>
+      <OrderedElem className={'report-title2'}>年度报告</OrderedElem>
       <Image
         imageName={'envelope'}
         src={envelope}
@@ -39,12 +30,11 @@ const Entrance: React.FC = () => {
         className={'envelope'}
         animationType={{ visible: 'infinite' }}
       ></Image>
-      <Word className={'addtion1'}>这是匣子陪您走过的一年时间里，</Word>
-      <Word className={'addtion2'}>属于我们的故事......</Word>
-      <MvPageButton
-        type={'mvPageVertically'}
-        onClick={() => handleClick()}
-      ></MvPageButton>
+      <OrderedElem className={'addtion1'}>
+        这是匣子陪您走过的一年时间里，
+      </OrderedElem>
+      <OrderedElem className={'addtion2'}>属于我们的故事......</OrderedElem>
+      <MvPageButton type={'mvPageVertically'}></MvPageButton>
       <Stars></Stars>
     </View>
   );

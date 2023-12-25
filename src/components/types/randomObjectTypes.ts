@@ -14,7 +14,7 @@ export interface RandomObjectProps {
   className?: string;
 }
 
-export interface StarProps {
+export interface RandomElemProps {
   interval?: number;
   stat?: ViewProps['stat'];
   numRange?: number[];

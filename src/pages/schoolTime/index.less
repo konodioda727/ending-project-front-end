@@ -1,0 +1,62 @@
+.calendar{
+    position: absolute;
+    top: 21vh;
+    width: 80vw;
+    left: 10vw;
+}
+.datePage-word-1{
+    font-size: 8vw;
+    position: absolute;
+    top: 5vh;
+    right: 10vw;
+}
+.datePage-word-2{
+    font-size: 8vw;
+    position: absolute;
+    top: 13vh;
+    left: 10vw;
+}
+.datePage-word-3{
+    font-size: 8vw;
+    position: absolute;
+    bottom: 30vh;
+    left: 10vw;
+    
+}
+.datePage-word-4{
+    font-size: 8vw;
+    position: absolute;
+    right: 10vw;
+    bottom: 24vh;
+}
+@keyframes calendar-mounting {
+    0% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+@keyframes calendar-visible  {
+    0%{
+        rotate: (0);
+    }
+    35%{
+        rotate: (5deg);
+    }
+    65%{
+        rotate: (-5deg);
+    }
+}
+@keyframes calendar-unmounting {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  }

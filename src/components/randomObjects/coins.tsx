@@ -1,28 +1,27 @@
-import React, { useEffect, useState } from 'react';
 import { RandomElemProps } from '../types/randomObjectTypes.ts';
-import star from '../../assets/stars.svg';
-import { GenerateRandomComponents, GenerateConfigs } from './index.tsx';
-import './stars.less';
+import { GenerateConfigs, GenerateRandomComponents } from './index.tsx';
+import coin from '../../assets/images/coin.png';
+import React, { useEffect, useState } from 'react';
 
-export function GenerateStarConfigs(
+export function GenerateCoinConfigs(
   elemNum: number,
   posRange?: RandomElemProps['posRange']
 ) {
   return GenerateConfigs(
     elemNum,
-    star,
-    `star-appear ${Math.random() * 5 + 3}s ease-in-out forwards ${
+    coin,
+    `coin-appear ${Math.random() * 5 + 3}s ease-in-out forwards ${
       Math.random() * 2 + 1
     }s, 
-      star-rotate 2s ease-in-out infinite ${Math.random() * 2}s`,
+      coin-rotate 2s ease-in-out infinite ${Math.random() * 2}s`,
     posRange
   );
 }
-export const Stars: React.FC<RandomElemProps> = props => {
+export const Coins: React.FC<RandomElemProps> = props => {
   const { interval, stat, numRange, posRange } = props;
   const [renderChildren, setRenderChildren] = useState<React.ReactElement>(
     GenerateRandomComponents(
-      GenerateStarConfigs(numRange ? numRange[1] : 8, posRange)
+      GenerateCoinConfigs(numRange ? numRange[1] : 8, posRange)
     )
   );
   useEffect(() => {
@@ -32,7 +31,7 @@ export const Stars: React.FC<RandomElemProps> = props => {
     const timer = setInterval(
       () => {
         setRenderChildren(
-          GenerateRandomComponents(GenerateStarConfigs(starNumRange, posRange))
+          GenerateRandomComponents(GenerateCoinConfigs(starNumRange, posRange))
         );
       },
       interval ? interval : 10000

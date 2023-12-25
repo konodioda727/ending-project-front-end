@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from '../../components/contentView';
-import Word from '../../components/word';
+import OrderedElem from '../../components/OrderedElem';
 import Image from '../../components/Image';
 import angryMan from '../../assets/images/angry.png';
 import angryFace from '../../assets/images/angry-face.png';
@@ -35,12 +35,18 @@ const BatteryAlert: React.FC = () => {
   };
   return (
     <View animationTime={3.6}>
-      <Word className={'battery-font-medium battery-text-1'}>x月x日这天，</Word>
-      <Word className={'battery-font-small battery-text-2'}>
+      <OrderedElem className={'battery-font-medium battery-text-1'}>
+        x月x日这天，
+      </OrderedElem>
+      <OrderedElem className={'battery-font-small battery-text-2'}>
         是你们寝室耗电
-      </Word>
-      <Word className={'battery-font-medium battery-text-3'}>最多的一天</Word>
-      <Word className={'battery-font-large battery-text-4'}>全校排名第x</Word>
+      </OrderedElem>
+      <OrderedElem className={'battery-font-medium battery-text-3'}>
+        最多的一天
+      </OrderedElem>
+      <OrderedElem className={'battery-font-large battery-text-4'}>
+        全校排名第x
+      </OrderedElem>
       <Image {...batteryAlertProps}></Image>
       <Image
         {...angryImageProps}

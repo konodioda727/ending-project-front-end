@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from '../../components/contentView';
-import Word from '../../components/word';
+import OrderedElem from '../../components/OrderedElem';
 import Image from '../../components/Image';
 import { ImageProps } from '../../components/types/ImageTypes.ts';
 import ebike from '../../assets/images/bike.png';
@@ -30,12 +30,24 @@ const ElectronicBike: React.FC = () => {
   };
   return (
     <View animationTime={4}>
-      <Word className={'electronicBike-word-1'}>这一年，</Word>
-      <Word className={'electronicBike-word-2'}>你的寝室</Word>
-      <Word className={'electronicBike-word-3'}>一共花了</Word>
-      <Word className={'electronicBike-word-4'}>xx元电费</Word>
-      <Word className={'electronicBike-word-5'}>相当于可以骑小电驴</Word>
-      <Word className={'electronicBike-word-6'}>绕地球x圈</Word>
+      <OrderedElem className={'electronicBike-OrderedElem-1'}>
+        这一年，
+      </OrderedElem>
+      <OrderedElem className={'electronicBike-OrderedElem-2'}>
+        你的寝室
+      </OrderedElem>
+      <OrderedElem className={'electronicBike-OrderedElem-3'}>
+        一共花了
+      </OrderedElem>
+      <OrderedElem className={'electronicBike-OrderedElem-4'}>
+        xx元电费
+      </OrderedElem>
+      <OrderedElem className={'electronicBike-OrderedElem-5'}>
+        相当于可以骑小电驴
+      </OrderedElem>
+      <OrderedElem className={'electronicBike-OrderedElem-6'}>
+        绕地球x圈
+      </OrderedElem>
       <Image {...eBikeProps}></Image>
       <Image {...grassProps}></Image>
       <Stars></Stars>
