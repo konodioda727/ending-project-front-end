@@ -30,8 +30,8 @@ const App: React.FC = () => {
         <Study></Study>
         <DinningHall></DinningHall>
         <NeverGoDinningHall></NeverGoDinningHall>
-        <RankCover></RankCover>
         <Spent></Spent>
+        <RankCover></RankCover>
       </ContentView>
     </>
   );

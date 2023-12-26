@@ -20,6 +20,10 @@ const Winter: React.FC = () => {
     audio.play();
     if (nikename) dispatchEvent(Eve);
   };
+  const handleBlur = () => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+  };
+
   return (
     <View disableScroll>
       <Image src={ccnubox} className={'ccnubox-large'}></Image>
@@ -31,6 +35,7 @@ const Winter: React.FC = () => {
           className={'name-input'}
           value={nikename}
           onChange={e => setnickename(e.target.value)}
+          onBlur={handleBlur}
           placeholder="请输入你的名字"
         />
       </OrderedElem>

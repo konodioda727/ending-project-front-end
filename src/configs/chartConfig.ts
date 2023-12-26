@@ -8,7 +8,7 @@ export const defaultOption: EChartsOption = {
     {
       name: 'Access From',
       type: 'pie',
-      radius: '100%',
+      radius: '90%',
       center: ['50%', '50%'],
       label: {
         position: 'inside',
