@@ -8,7 +8,7 @@ import cloud from '../../assets/images/cloud.png';
 import { Stars } from '../../components/randomObjects/star.tsx';
 import defaultMusic from '../../assets/music/BackgroundMusic.mp3';
 
-const Winter: React.FC = () => {
+const NameInput: React.FC = () => {
   const Eve = new Event('mvPageVertically');
   const [nikename, setnickename] = useState('');
   const audio = new Audio(defaultMusic);
@@ -51,4 +51,4 @@ const Winter: React.FC = () => {
     </View>
   );
 };
-export default Winter;
+export default NameInput;
