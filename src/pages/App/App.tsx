@@ -11,6 +11,7 @@ import BatteryAlert from '../batteryAlert';
 import Study from '../study';
 import EatCard from '../eat-card';
 import RankCover from '../rankCover';
+import Rank from '../rank';
 
 const App: React.FC = () => {
   return (
@@ -26,6 +27,7 @@ const App: React.FC = () => {
          <EatCard></EatCard> 
         <Study></Study>
         <RankCover></RankCover>
+        <Rank></Rank>
       </ContentView>
     </>
   );

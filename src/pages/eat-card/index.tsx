@@ -23,9 +23,10 @@ const EatCard: React.FC = () => {
       <Word className={'card-word-1'}>这一年,</Word>
       <Word className={'card-word-2'}>你在食堂刷了</Word>
       <Word className={'card-word-3'}>{`${'cardTime'}次卡`}</Word>
-      <Word className={'card-word-4'}>{`累计消费${'cardMoney'}元`}</Word>
-      <Word className={'card-word-5'}>相当于</Word>
-      <Word className={'card-word-6'}>{`${'cardMoney'}次\n疯狂星期四`}</Word>
+      <Word className={'card-word-4'}>累计消费</Word>
+      <Word className={'card-word-5'}>{'cardMoney元'}</Word>
+      <Word className={'card-word-6'}>相当于</Word>
+      <Word className={'card-word-7'}>{`${'cardMoney'}支眉笔`}</Word>
       <MvPageButton type={'mvPageVertically'} mode={'light'}></MvPageButton>
       <Stars></Stars>
     </View>
