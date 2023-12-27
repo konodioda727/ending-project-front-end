@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import { View } from '../../components/contentView';
-import Word from '../../components/word';
+import OrderedElem from '../../components/OrderedElem';
 import { Stars } from '../../components/randomObjects/star.tsx';
 import { LoadingPageProps } from '../../components/types/loadingPageTypes.ts';
 
 const FakeLoadingPage: React.FC = () => {
   return (
     <View>
-      <Word>loading...</Word>
+      <OrderedElem>loading...</OrderedElem>
       <Load></Load>
       <Stars></Stars>
     </View>

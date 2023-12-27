@@ -1,11 +1,12 @@
 import { HTMLAttributes, ReactElement } from 'react';
 import { ViewProps } from './contentViewTypes.ts';
 
-export interface WordTypes {
+export interface OrderedElemTypes {
   children: string | ReactElement;
   mountindex?: number;
   stat?: ViewProps['stat'];
-  wordSpeed?: number;
+  OrderedElemSpeed?: number;
   noWait?: boolean;
 }
-export type WordProps = WordTypes & HTMLAttributes<HTMLDivElement>;
+export type OrderedElemProps = OrderedElemTypes &
+  HTMLAttributes<HTMLDivElement>;

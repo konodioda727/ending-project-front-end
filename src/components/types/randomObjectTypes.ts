@@ -14,7 +14,7 @@ export interface RandomObjectProps {
   className?: string;
 }
 
-export interface StarProps {
+export interface RandomElemProps {
   interval?: number;
   stat?: ViewProps['stat'];
   numRange?: number[];
@@ -23,3 +23,11 @@ export interface StarProps {
     y: [min: number, max: number];
   };
 }
+export type GeneConfigTypes = {
+  elemNum: number;
+  src: string;
+  animation: string[];
+  posRange?: RandomElemProps['posRange'];
+  name?: string;
+  biasedDom?: () => number;
+};
