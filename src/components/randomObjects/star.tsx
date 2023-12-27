@@ -1,48 +1,29 @@
 import React, { useEffect, useState } from 'react';
-import { RandomObjectTypes, StarProps } from '../types/randomObjectTypes.ts';
+import { RandomElemProps } from '../types/randomObjectTypes.ts';
 import star from '../../assets/stars.svg';
-import { GenerateRandomComponents } from './index.tsx';
+import { GenerateRandomComponents, GenerateConfigs } from './index.tsx';
 import './stars.less';
 
-function sigmoid(x: number): number {
-  return 1 / (1 + Math.exp(-x));
-}
-
-function biasedRandom() {
-  const r = Math.random() * 10 - 5;
-  return sigmoid(r) * 80;
-}
-
 export function GenerateStarConfigs(
-  starNum: number,
-  posRange?: StarProps['posRange']
-): RandomObjectTypes[] {
-  const res: RandomObjectTypes[] = [];
-  const sizeDict: RandomObjectTypes['size'][] = ['medium', 'small', 'big'];
-  const genePos = (posRange: StarProps['posRange'], axis: 'x' | 'y') => {
-    return `${
-      posRange
-        ? (biasedRandom() * (posRange[axis][1] - posRange[axis][0])) / 100 +
-          posRange[axis][0]
-        : biasedRandom()
-    }%`;
-  };
-  for (let i = 0; i < starNum; i++) {
-    res.push({
-      size: sizeDict[Math.round(Math.random() * 2)],
-      top: genePos(posRange, 'y'),
-      left: genePos(posRange, 'x'),
-      animation: `star-appear ${Math.random() * 5 + 3}s ease-in-out forwards ${
+  elemNum: number,
+  posRange?: RandomElemProps['posRange']
+) {
+  const animationList: string[] = [];
+  for (let i = 0; i < elemNum; i++) {
+    animationList.push(
+      `star-appear ${Math.random() * 5 + 3}s ease-in-out forwards ${
         Math.random() * 2 + 1
-      }s, 
-      star-rotate 2s ease-in-out infinite ${Math.random() * 2}s`,
-      src: star,
-    });
+      }s, star-rotate 2s ease-in-out infinite ${Math.random() * 2}s`
+    );
   }
-  return res;
+  return GenerateConfigs({
+    elemNum: elemNum,
+    src: star,
+    animation: animationList,
+    posRange: posRange,
+  });
 }
-
-export const Stars: React.FC<StarProps> = props => {
+export const Stars: React.FC<RandomElemProps> = props => {
   const { interval, stat, numRange, posRange } = props;
   const [renderChildren, setRenderChildren] = useState<React.ReactElement>(
     GenerateRandomComponents(

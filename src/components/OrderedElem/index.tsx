@@ -1,18 +1,18 @@
 import React from 'react';
-import { WordProps } from '../types/wordTypes.ts';
+import { OrderedElemProps } from '../types/orderedElemTypes.ts';
 import './index.less';
 
-const Word: React.FC<WordProps> = props => {
+const OrderedElem: React.FC<OrderedElemProps> = props => {
   const {
     style,
     mountindex,
     children,
     stat,
     className,
-    wordSpeed,
+    OrderedElemSpeed,
     ...restProps
   } = props;
-  const speed = wordSpeed ? wordSpeed : 1;
+  const speed = OrderedElemSpeed ? OrderedElemSpeed : 1;
   const animationDelayTime = (): number => {
     if (mountindex != undefined) return (speed * mountindex) / 2;
     return 0;
@@ -20,11 +20,11 @@ const Word: React.FC<WordProps> = props => {
   return (
     <>
       <div
-        className={`${className} word-${stat} word-wrap`}
+        className={`${className} OrderedElem-${stat} OrderedElem-wrap`}
         {...restProps}
         style={{
           ...style,
-          animation: `word-${stat} ${speed}s ease-in-out forwards ${animationDelayTime()}s`,
+          animation: `OrderedElem-${stat} ${speed}s ease-in-out forwards ${animationDelayTime()}s`,
         }}
       >
         {children}
@@ -33,9 +33,9 @@ const Word: React.FC<WordProps> = props => {
   );
 };
 
-export default Word;
+export default OrderedElem;
 
-Word.defaultProps = {
+OrderedElem.defaultProps = {
   className: '',
-  wordSpeed: 1,
+  OrderedElemSpeed: 1,
 };
