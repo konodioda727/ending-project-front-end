@@ -5,6 +5,7 @@ import Image from '../../components/Image';
 import { ImageProps } from '../../components/types/ImageTypes.ts';
 import OrderedElem from '../../components/OrderedElem';
 import './index.less';
+import { Stars } from '../../components/randomObjects/star.tsx';
 
 const Conclusion: React.FC = () => {
   const imgProps: ImageProps = {
@@ -42,6 +43,7 @@ const Conclusion: React.FC = () => {
           保存
         </div>
       </OrderedElem>
+      <Stars></Stars>
       <Image {...imgProps}></Image>
     </View>
   );

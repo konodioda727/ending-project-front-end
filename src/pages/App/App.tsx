@@ -25,22 +25,22 @@ const App: React.FC = () => {
     <>
       <GradientPage></GradientPage>
       <ContentView>
-        {/*<LoadingPage></LoadingPage>*/}
-        {/*<NameInput></NameInput>*/}
-        {/*<Entrance></Entrance>*/}
-        {/*<SchoolTime></SchoolTime>*/}
-        {/*<BatteryAlert></BatteryAlert>*/}
-        {/*<ElectronicBike></ElectronicBike>*/}
-        {/*<Winter></Winter>*/}
-        {/*<EatCard></EatCard>*/}
-        {/*<Study></Study>*/}
-        {/*<DinningHall></DinningHall>*/}
-        {/*<NeverGoDinningHall></NeverGoDinningHall>*/}
-        {/*<Spent></Spent>*/}
-        {/*<RankCover></RankCover>*/}
-        {/*<Rank></Rank>*/}
-        {/*<Thanks></Thanks>*/}
-        {/*<Cheer></Cheer>*/}
+        <LoadingPage></LoadingPage>
+        <NameInput></NameInput>
+        <Entrance></Entrance>
+        <SchoolTime></SchoolTime>
+        <BatteryAlert></BatteryAlert>
+        <ElectronicBike></ElectronicBike>
+        <Winter></Winter>
+        <EatCard></EatCard>
+        <Study></Study>
+        <DinningHall></DinningHall>
+        <NeverGoDinningHall></NeverGoDinningHall>
+        <Spent></Spent>
+        <RankCover></RankCover>
+        <Rank></Rank>
+        <Thanks></Thanks>
+        <Cheer></Cheer>
         <Conclusion></Conclusion>
       </ContentView>
     </>

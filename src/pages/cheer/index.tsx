@@ -7,6 +7,7 @@ import { ImageProps } from '../../components/types/ImageTypes.ts';
 import cloud from '../../assets/images/cloud-gold.png';
 import MvPageButton from '../../components/mvPageButton';
 import './index.less';
+import { Stars } from '../../components/randomObjects/star.tsx';
 
 const Cheer: React.FC = () => {
   const imgProps: ImageProps = {
@@ -30,6 +31,7 @@ const Cheer: React.FC = () => {
       </OrderedElem>
       <Image className={'gold-cloud'} {...imgProps}></Image>
       <MvPageButton type={'mvPageHorizontally'}></MvPageButton>
+      <Stars></Stars>
       <Particles></Particles>
     </View>
   );
