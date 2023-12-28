@@ -14,6 +14,11 @@ import RankCover from '../rankCover';
 import DinningHall from '../dinningHall';
 import NeverGoDinningHall from '../neverGoDinningHall';
 import Spent from '../spent';
+import Rank from '../rank';
+import Thanks from '../thanks';
+import ElectronicBike from '../electronicBike';
+import Cheer from '../cheer';
+import Conclusion from '../conclusion';
 
 const App: React.FC = () => {
   return (
@@ -25,6 +30,7 @@ const App: React.FC = () => {
         <Entrance></Entrance>
         <SchoolTime></SchoolTime>
         <BatteryAlert></BatteryAlert>
+        <ElectronicBike></ElectronicBike>
         <Winter></Winter>
         <EatCard></EatCard>
         <Study></Study>
@@ -32,6 +38,10 @@ const App: React.FC = () => {
         <NeverGoDinningHall></NeverGoDinningHall>
         <Spent></Spent>
         <RankCover></RankCover>
+        <Rank></Rank>
+        <Thanks></Thanks>
+        <Cheer></Cheer>
+        <Conclusion></Conclusion>
       </ContentView>
     </>
   );

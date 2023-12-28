@@ -21,7 +21,7 @@
     bottom: 35vh;
     right: 17vw;
     width: 60vw;
-    height: 3vh;
+    min-height: 3vh+1%;
     padding: 0 3vw 0 3vw;
     font-size: 4vw;
     z-index: 3;
@@ -39,6 +39,11 @@
 }
 .name-ready{
     animation: nameon 1s forwards;
+}
+@media screen and (max-height:600px) {
+    .ccnubox-large,.cloud-first{
+        display: none;
+    }
 }
 @keyframes nameon{
     0%{
