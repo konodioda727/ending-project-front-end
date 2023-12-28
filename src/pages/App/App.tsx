@@ -14,11 +14,14 @@ import RankCover from '../rankCover';
 import DinningHall from '../dinningHall';
 import NeverGoDinningHall from '../neverGoDinningHall';
 import Spent from '../spent';
+import Scrapes from '../../components/particles';
+import ElectronicBike from '../electronicBike';
 
 const App: React.FC = () => {
   return (
     <>
       <GradientPage></GradientPage>
+      <Scrapes></Scrapes>
       <ContentView>
         <LoadingPage></LoadingPage>
         <NameInput></NameInput>
@@ -30,6 +33,7 @@ const App: React.FC = () => {
         <Study></Study>
         <DinningHall></DinningHall>
         <NeverGoDinningHall></NeverGoDinningHall>
+        <ElectronicBike></ElectronicBike>
         <Spent></Spent>
         <RankCover></RankCover>
       </ContentView>
