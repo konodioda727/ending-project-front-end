@@ -18,7 +18,7 @@ const Spent: React.FC = () => {
       <OrderedElem>
         <Charts type={'line'} className={'spent-chart'}></Charts>
       </OrderedElem>
-      <Coins numRange={[4, 6]} posRange={{ x: [0, 100], y: [0, 48] }}></Coins>
+      <Coins numRange={[4, 6]} posRange={{ x: [0, 100], y: [0, 30] }}></Coins>
       <Stars numRange={[4, 8]}></Stars>
       <MvPageButton type={'mvPageVertically'}></MvPageButton>
     </View>

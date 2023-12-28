@@ -30,7 +30,7 @@ const Cheer: React.FC = () => {
         所愿皆所成
       </OrderedElem>
       <Image className={'gold-cloud'} {...imgProps}></Image>
-      <MvPageButton type={'mvPageHorizontally'}></MvPageButton>
+      <MvPageButton type={'mvPageVertically'}></MvPageButton>
       <Stars></Stars>
       <Particles></Particles>
     </View>
