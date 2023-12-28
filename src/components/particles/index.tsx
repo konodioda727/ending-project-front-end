@@ -1,9 +1,10 @@
-import { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import Particles, { initParticlesEngine } from '@tsparticles/react';
 import { Engine, ISourceOptions } from '@tsparticles/engine';
 import { loadSlim } from '@tsparticles/slim';
 import { loadConfettiPreset } from '@tsparticles/preset-confetti';
 import { loadEmittersPlugin } from '@tsparticles/plugin-emitters';
+import { ParticleProps } from '../types/particleProps.ts';
 
 const defaultConfig: ISourceOptions = {
   direction: 'top',
@@ -20,9 +21,9 @@ const defaultConfig: ISourceOptions = {
     height: 0,
   },
 };
-const Scrapes = () => {
+const Scrapes: React.FC<ParticleProps> = props => {
   const [init, setInit] = useState(false);
-
+  const { stat } = props;
   useEffect(() => {
     initParticlesEngine(async (engine: Engine) => {
       await loadSlim(engine);
@@ -76,7 +77,7 @@ const Scrapes = () => {
     []
   );
 
-  if (init) {
+  if (init && stat === 'visible') {
     return <Particles id="tsparticles" options={options} />;
   }
 

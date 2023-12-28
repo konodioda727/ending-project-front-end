@@ -16,26 +16,32 @@ import NeverGoDinningHall from '../neverGoDinningHall';
 import Spent from '../spent';
 import Rank from '../rank';
 import Thanks from '../thanks';
+import ElectronicBike from '../electronicBike';
+import Cheer from '../cheer';
+import Conclusion from '../conclusion';
 
 const App: React.FC = () => {
   return (
     <>
       <GradientPage></GradientPage>
       <ContentView>
-        <LoadingPage></LoadingPage>
-        <NameInput></NameInput>
-        <Entrance></Entrance>
-        <SchoolTime></SchoolTime>
-        <BatteryAlert></BatteryAlert>
-        <Winter></Winter>
-        <EatCard></EatCard>
-        <Study></Study>
-        <DinningHall></DinningHall>
-        <NeverGoDinningHall></NeverGoDinningHall>
-        <Spent></Spent>
-        <RankCover></RankCover>
-        <Rank></Rank>
-        <Thanks></Thanks>
+        {/*<LoadingPage></LoadingPage>*/}
+        {/*<NameInput></NameInput>*/}
+        {/*<Entrance></Entrance>*/}
+        {/*<SchoolTime></SchoolTime>*/}
+        {/*<BatteryAlert></BatteryAlert>*/}
+        {/*<ElectronicBike></ElectronicBike>*/}
+        {/*<Winter></Winter>*/}
+        {/*<EatCard></EatCard>*/}
+        {/*<Study></Study>*/}
+        {/*<DinningHall></DinningHall>*/}
+        {/*<NeverGoDinningHall></NeverGoDinningHall>*/}
+        {/*<Spent></Spent>*/}
+        {/*<RankCover></RankCover>*/}
+        {/*<Rank></Rank>*/}
+        {/*<Thanks></Thanks>*/}
+        {/*<Cheer></Cheer>*/}
+        <Conclusion></Conclusion>
       </ContentView>
     </>
   );

@@ -1,0 +1,65 @@
+@cheerTextLarge: 2.8rem;
+@cheerTextMedium: 1.8rem;
+@cheerTextSmall: 1.4rem;
+
+.cheer-text-1, .cheer-text-2, .cheer-text-3, .cheer-text-4, .cheer-text-5, .cheer-text-6, .cheer-text-7 {
+  position: absolute;
+  font-size: @cheerTextMedium;
+}
+.cheer-text-1 {
+  top: 5%;
+  left: 8%;
+}
+.cheer-text-2 {
+  top: 15%;
+  left: 30%;
+}
+.cheer-text-3 {
+  top: 25%;
+  left: 54%;
+}
+.cheer-text-4 {
+  top: 35%;
+  left: 8%;
+}
+.cheer-text-5 {
+  top: 45%;
+  left: 8%;
+}
+.cheer-text-6, .cheer-text-7 {
+  left: 50%;
+  transform: translateX(-50%);
+}
+.cheer-text-6 {
+  top: 58%;
+}
+.cheer-text-7 {
+  top: 65%;
+}
+.gold-cloud {
+  position: absolute;
+  width: 100vw;
+  bottom: -26%;
+  left: -30%;
+}
+@keyframes gold-cloud-mounting {
+  0% {
+    left: -80%;
+    bottom: -36%;
+    opacity: 1;
+  }
+  100% {
+    //left: -30%;
+    opacity: 1;
+  }
+}
+@keyframes gold-cloud-visible {
+  50% {
+    opacity: .8;
+  }
+}
+@keyframes gold-cloud-unmounting {
+  100% {
+    left: -100%;
+  }
+}
