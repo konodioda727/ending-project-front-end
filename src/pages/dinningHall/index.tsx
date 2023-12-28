@@ -28,7 +28,7 @@ const DinningHall: React.FC = () => {
     delay: 1,
   };
   return (
-    <View animationTime={3}>
+    <View animationTime={4}>
       <OrderedElem className={'dinningHall-text-medium dinningHall-text-1'}>
         x月x日
       </OrderedElem>

@@ -13,19 +13,19 @@ import MvPageButton from '../../components/mvPageButton';
 import { Stars } from '../../components/randomObjects/star.tsx';
 const BatteryAlert: React.FC = () => {
   const angryImageProps: ImageProps = {
-    className: 'angry-man',
+    className: 'angry-man angry-visible',
     animationTime: 2.6,
     animationType: { visible: 'infinite' },
     delay: 1,
   };
   const batteryProps: ImageProps = {
-    className: 'batteryImg',
+    className: 'batteryImg battery-visible',
     animationTime: 2.6,
     animationType: { visible: 'infinite' },
     delay: 1,
   };
   const batteryAlertProps: ImageProps = {
-    className: 'battery-alert',
+    className: 'battery-alert battery-alert-visible',
     animationTime: 2.6,
     animationType: { visible: 'infinite' },
     src: batteryAlert,

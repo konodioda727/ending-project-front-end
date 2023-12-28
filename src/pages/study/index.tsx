@@ -17,7 +17,7 @@ const Study: React.FC = () => {
         className={'study-OrderedElem-3'}
       >{`共计${'classhour'}小时`}</OrderedElem>
       <OrderedElem>
-        <Charts style={{ width: '90vw', height: '50vh' }}></Charts>
+        <Charts style={{ width: '80vw', height: '60vh' }}></Charts>
       </OrderedElem>
       <OrderedElem className={'study-OrderedElem-4'}>学习之路上，</OrderedElem>
       <OrderedElem className={'study-OrderedElem-5'}>
