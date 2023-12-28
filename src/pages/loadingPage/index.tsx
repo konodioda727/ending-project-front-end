@@ -48,7 +48,7 @@ export const Load: React.FC<LoadingPageProps> = props => {
         }
       };
 
-      img.src = `/src/assets/images/${url}`;
+      img.src = url;
       console.log(img);
     });
   }
