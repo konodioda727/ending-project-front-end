@@ -6,12 +6,11 @@
   font-size: 1.8rem;
   width: 100vw;
 }
+
 .conclusion-text {
-  position: relative;
-  margin-top: 3vh !important;
+  position: absolute;
   text-align: left;
   left: 6vw;
-  top: 3vh;
   font-size: 1.2rem;
   color: #1a1a1a;
   font-family: sans-serif !important;
@@ -19,10 +18,17 @@
   transform-origin: left;
   z-index: 2 !important;
 }
-.conclusion-text-1 {
-  top: 10vh;
-  //margin-top: 10vh;
+.loop(@index) when (@index < 9) {
+  .conclusion-text-@{index} {
+    position: absolute;
+    left:(16vw - 0.3vw * @index);
+    top: (20vh + 6vh * @index);
+  }
+  .loop(@index + 1); // 递归调用自己来创建循环
 }
+
+// 使用混合开始循环，假设我们要创建10个项目
+.loop(1);
 .card {
   position: absolute;
   top: 10%;
@@ -43,14 +49,4 @@
   background-color: #FCBC43;
   z-index: 3;
 }
-// 定义混合（mixin）来实现循环
-.loop(@index) when (@index < 8) {
-  .conclusion-text-@{index} {
-    left:(6vw - 0.6vw * @index);
-    top: 10vh
-  }
-  .loop(@index + 1); // 递归调用自己来创建循环
-}
 
-// 使用混合开始循环，假设我们要创建10个项目
-.loop(1);
