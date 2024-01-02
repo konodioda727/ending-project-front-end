@@ -4,24 +4,49 @@
   }
 .rank-title-box{
   position: absolute;
-  top: 7vh;
+  top: 7vh !important;
   left: 22vw;
+  z-index: 2;
     width: 55vw;
-    height: 6vh;
+    height: 6vh !important;
     background-color: #76491B;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
+.inner-text {
+  .rank-content-word-1{
+    position: absolute;
+    top: 1vh;
+    left: 2vw;
+    color: #76491B;
+    font-size: 6vw;
+  }
+  .rank-content-word-2{
+    position: absolute;
+    bottom: 3vh;
+    left: 25vw;
+    color:#5A77D8;
+    font-size: 6vw;
+  }
+  .rank-content-word-3{
+    position: absolute;
+    bottom: 4vh;
+    right:  1vw;
+    color:#FF7272;
+    font-family: Coca-Cola, sans-serif;
+    font-size: 5vw;
+    transform: rotate(25deg);
+  }
+}
 .rank-title{
     width: 53vw;
-    height: 5vh;
+    height: 5vh !important;
     border-radius: 2vw;
-    font-family: Coca-Cola;
+    font-family: Coca-Cola, sans-serif;
     color: #76491B;
     font-size: 3vh;
-    background: #F8F8DC;
+    background-color: #F8F8DC;
 }
 .rank-box{
     width: 81vw+1px;
@@ -31,158 +56,53 @@
     justify-content: center;
     align-items: center;
 }
-.rank-content{
+.rank-content {
     width: 81vw;
     height: 14vh;
-    background: #F8F8DC;
+    background-color: #F8F8DC;
     border-radius: 2vw;
-    position: relative;
+    position: absolute;
 }
 .rank-box-1{
     position: absolute;
     top: 14vh;
     left: 7vw;
-          .rank-content-word-1{
-            position: absolute;
-            top: 1vh;
-            left: 2vw;
-            color: #76491B;
-            font-size: 6vw;
-        }
-        .rank-content-word-2{
-          position: absolute;
-          bottom: 3vh;
-          left: 25vw;
-          color:#5A77D8;
-          font-size: 6vw;
-        }
-        .rank-content-word-2{
-          position: absolute;
-          bottom: 2vh;
-          left: 25vw;
-          color:#5A77D8;
-          font-size: 6vw;
-        }
-        .rank-content-word-3{
-          position: absolute;
-          bottom: 4vh;
-          right:  5vw;
-          color:#FF7272;
-          font-family: Coca-Cola;
-          font-size: 5vw;
-          transform: rotate(-25deg);
-        }
+    .inner-text;
 }
 .rank-box-2{
   position: absolute;
   top: 28vh;
   left: 10vw;
-        .rank-content-word-1{
-          position: absolute;
-          top: 1vh;
-          left: 2vw;
-          color: #76491B;
-          font-size: 6vw;
-      }
-      .rank-content-word-2{
-        position: absolute;
-        bottom: 3vh;
-        left: 25vw;
-        color:#5A77D8;
-        font-size: 6vw;
-      }
-      .rank-content-word-2{
-        position: absolute;
-        bottom: 2vh;
-        left: 25vw;
-        color:#5A77D8;
-        font-size: 6vw;
-      }
-      .rank-content-word-3{
-        position: absolute;
-        bottom: 4vh;
-        right:  1vw;
-        color:#FF7272;
-        font-family: Coca-Cola;
-        font-size: 5vw;
-        transform: rotate(25deg);
-      }
+  .inner-text;
 }
 .rank-box-3{
   position: absolute;
   top: 40vh;
   left: 7vw;
-        .rank-content-word-1{
-          position: absolute;
-          top: 1vh;
-          left: 2vw;
-          color: #76491B;
-          font-size: 6vw;
-      }
-      .rank-content-word-2{
-        position: absolute;
-        bottom: 3vh;
-        left: 25vw;
-        color:#5A77D8;
-        font-size: 6vw;
-      }
-      .rank-content-word-2{
-        position: absolute;
-        bottom: 2vh;
-        left: 25vw;
-        color:#5A77D8;
-        font-size: 6vw;
-      }
-      .rank-content-word-3{
-        position: absolute;
-        bottom: 4vh;
-        right:  1vw;
-        color:#FF7272;
-        font-family: Coca-Cola;
-        font-size: 5vw;
-        transform: rotate(-25deg);
-      }
+  .inner-text;
 }
 .rank-box-4{
   position: absolute;
   top: 53vh;
   left: 10vw;
-        .rank-content-word-1{
-          position: absolute;
-          top: 1vh;
-          left: 2vw;
-          color: #76491B;
-          font-size: 6vw;
-      }
-      .rank-content-word-2{
-        position: absolute;
-        bottom: 3vh;
-        left: 25vw;
-        color:#5A77D8;
-        font-size: 6vw;
-      }
-      .rank-content-word-2{
-        position: absolute;
-        bottom: 2vh;
-        right: 5vw;
-        color:#5A77D8;
-        font-size: 6vw;
-      }
-      .rank-content-word-3{
-        position: absolute;
-        bottom: 4vh;
-        left:  1vw;
-        color:#FF7272;
-        font-family: Coca-Cola;
-        font-size: 5vw;
-        transform: rotate(-10deg);
-      }
+  .inner-text;
 }
 .rank-content-word-3{
   animation: breath 2s linear infinite;
 }
+.rank-box, .rank-title-box, .rank-title, .rank-content{
+  animation: box-ani 2s linear infinite;
+}
+//.rank-content-word-1{
+//  animation: breath 2s linear infinite;
+//}
 @keyframes breath{
   50%{
     scale: (0.9);
+  }
+}
+@keyframes box-ani {
+  100% {
+    scale: 1;
   }
 }
